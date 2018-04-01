@@ -5,7 +5,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Initial Page</title>
-		<link rel="stylesheet" type="text/css" href="InitialPage.css"/>
+		<link rel="stylesheet" type="text/css" href="./css/InitialPage.css"/>
 	</head>
 <body>
 	<div id="form-div">
