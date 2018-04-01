@@ -1,0 +1,247 @@
+@charset "UTF-8";
+
+body {
+	background-color: #d3d3d3;
+	
+}
+#input {
+	border: 2px solid;
+	border-color: #A9A9A9;
+	width: 300px;
+	height: 37px;
+	margin: 0px;
+	text-align: center;
+}
+
+input#topicInput {
+	/* adds border to input box */
+	border-style: solid;
+	border-color: #777777;
+	border-width: 3px;
+
+	height: 35px;
+	width: 200px;
+
+	padding-left: 5px;
+	margin-left: 14px; /* centers the box */
+}
+
+
+
+#title {
+	text-align: center;
+	color: #3498DB;
+}
+
+button#saveButton {
+	height: 42px;
+	width: 130px;
+	background-color: #3498DB; /* dark gray background color */
+	color: white;
+	margin-left: 10px;
+	cursor: pointer;
+	
+}
+
+input#topicInput::placeholder {
+	color: #AAAAAA; /* light gray color */
+}
+
+input#topicSubmit {
+	height: 42px;
+	width: 130px;
+
+	background-color: #3498DB; /* dark gray background color */
+	color: white;
+
+	margin-left: 10px;
+
+	cursor: pointer;
+}
+
+input#topicSubmit:disabled {
+	opacity: 0.5; /* faded out button when disabled */
+	cursor: default;
+}
+
+html, body, div#container {
+	height: 100%;
+	margin: 0;
+}
+
+div#container {
+	/* centers the form elements horizontally and veritcally */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	/* justify-content: space-between; */
+}
+
+form#topicForm {
+	margin: 0;
+}
+
+.dropbtn {
+    background-color: #3498DB;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #2980B9;
+}
+
+.dropdown {
+    /* position: relative; */
+    text-align:center;
+    display: inline-block;
+    align: center;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown a:hover {background-color: #ddd}
+
+.show {display:block;}
+
+.dropbtn {
+    background-color: #3498DB;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #2980B9;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown a:hover {background-color: #ddd}
+
+.show {display:block;}
+
+/* Switch for the photo rotation and border */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 14px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 13px;
+  width: 13px;
+  left: 4px;
+  bottom: 2px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(13px);
+  -ms-transform: translateX(13px);
+  transform: translateX(13px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 24px;
+}
+
+.slider.round:before {
+  border-radius: 75%;
+}
+#build-button {
+	background-color: #A9A9A9;
+	color: white;
+	height: 40px;
+	width: 100px;
+	margin: 0px;
+	text-align: center;
+	display: inline-block;
+}
+
+#form-div {
+	height: 260px;
+    width: 500px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -100px;
+    margin-left: -200px;
+    overflow: hidden;
+    display:inline;
+}
+
+.input-div {
+	display:inline-block;
+}
