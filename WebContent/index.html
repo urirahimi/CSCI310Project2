@@ -29,7 +29,7 @@ function onLoginFormSubmit ()
 	
 	FirebaseDB.User.signIn(email, password)
 		.then(() => {
-			window.location.replace("landing.html");
+			window.location.replace("landing.jsp");
 		})
 		.catch(err => {
 		document.getElementById("login-error-message").innerHTML = err.message;

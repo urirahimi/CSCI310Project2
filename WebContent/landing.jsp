@@ -5,7 +5,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Initial Page</title>
-		<link rel="stylesheet" type="text/css" href="./MainPageCSS.css"/>
+		<link rel="stylesheet" type="text/css" href="./css/landing.css"/>
 		<script>
 				// Enables and disables the button depending on whether text is entered
 				function enableButton() {
