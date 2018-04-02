@@ -77,13 +77,13 @@
 		<div id="container">
 			
 			<div class="dropdown"> 
-				<button onclick="dropFunc()" class="dropbtn">Select Shape</button>
+				<button onclick="dropFunc()" class="dropbtn" id="collage-shape-dropdown-menu">Select Shape</button>
 				  <div id="myDropdown" class="dropdown-content">
 				    <a >Shape 1</a>
 				    <a >Shape 2</a>
 				    <a >Shape 3</a>
 				  </div>
-				<button onclick="collageOptionsFunction()" class="dropbtn">Collage Options</button>
+				<button onclick="collageOptionsFunction()" class="dropbtn" id="collage-options-dropdown-menu">Collage Options</button>
 				  <div id="myDropdown2" class="dropdown-content">
 				    <a>Photo Rotation</a>
 				    		<label class="switch">
@@ -117,7 +117,7 @@
 			<!--  The form that contains the two input elements -->
 			<form name="myform" method="POST" action="${pageContext.request.contextPath}/search">
 				<div class="input-div"> 
- 				<input id="input" type="text" name="topic" placeholder="Enter topic" onkeyup="if(this.value.length != 0) {submit.disabled = false} else {submit.disabled = true}"/><br/> 
+ 				<input id="topic-input" type="text" name="topic" placeholder="Enter topic" onkeyup="if(this.value.length != 0) {submit.disabled = false} else {submit.disabled = true}"/><br/> 
  			</div>  
 			<div class="input-div"> 
 <!--  				<input class="submitButton" id="submitButton" type="submit" name="submit" value="Build Collage" disabled/> -->
