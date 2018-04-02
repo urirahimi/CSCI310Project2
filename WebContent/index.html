@@ -41,42 +41,29 @@ function onLoginFormSubmit ()
 </head>
 <body>
 	<h1 class="header-text">BroGrammers' Collage</h1>
-	<button onclick="displayModal();">
-		Login
-	</button>
 	
 	<!-- Login Modal -->
-	<div id="login-modal" class="modal">
-		<form class="modal-content animate" id="login-modal-form" onsubmit="return onLoginFormSubmit();">
-			<div class="imgcontainer">
-				<span onclick="hideModal();" class="close" title="Close Modal">&times;</span>
-			</div>
+	<form class="modal-content animate" id="login-modal-form" onsubmit="return onLoginFormSubmit();">
+		<div class="imgcontainer">
+			<span onclick="hideModal();" class="close" title="Close Modal">&times;</span>
+		</div>
 
-			<div class="container">
-				<!-- Email field -->
-				<label for="email"><b>Email</b></label>
-				<input class="login-modal-text-input" id="login-modal-email-input" type="text" placeholder="Enter email" name="email" required>
+		<div class="container">
+			<!-- Email field -->
+			<label for="email"><b>Email</b></label>
+			<input class="login-modal-text-input" id="login-modal-email-input" type="text" placeholder="Enter email" name="email" required>
 
-				<!-- Password field -->
-				<label for="password"><b>Password</b></label>
-				<input class="login-modal-text-input" id="login-modal-password-input" type="password" placeholder="Enter Password" name="password" required>
+			<!-- Password field -->
+			<label for="password"><b>Password</b></label>
+			<input class="login-modal-text-input" id="login-modal-password-input" type="password" placeholder="Enter Password" name="password" required>
 
-				<!-- Login button -->
-				<button type="submit">Login</button>
-				<input type="checkbox" checked="checked" name="remember">
-				Remember Me
-				
-				<!-- Any errors when logging in will be displayed here -->
-				<p id="login-error-message"><p>
-			</div>
-
+			<!-- Login button -->
+			<button type="submit">Login</button>
 			
-			<div class="container" style="background-color: #f1f1f1">
-				<button type="button" onclick="hideModal();" class="cancelbtn">Cancel</button>
-			</div>
-			
-		</form>
-	</div>
+			<!-- Any errors when logging in will be displayed here -->
+			<p id="login-error-message"><p>
+		</div>
+	</form>
 	
 	<!-- When the user clicks anywhere outside of the modal, close it -->
 	<script type="text/javascript">
