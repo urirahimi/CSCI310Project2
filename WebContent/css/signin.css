@@ -12,12 +12,14 @@ input[type=text], input[type=password] {
 }
 
 /* Style for Header */
-.h1 {
+.header-text {
 	color: lightblue;
 	text-align: center;
 }
 
-
+#login-error-message {
+	color: red;
+}
 
 /* Set a style for all buttons */
 button {
