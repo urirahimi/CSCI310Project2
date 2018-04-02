@@ -73,7 +73,7 @@
 			</div>
 			<a id="export" download="collage.png" href="<%=b64%>"><input id="export-button" type="submit" value="Export Collage" onclick="return check()"></a>
 			<div id="collage">
-				<img id="collage-image" src="<%=b64%>"/>
+				<img id="collage-image" src="<%=b64%>" alt="Insufficient images found."/>
 			</div>
 			<div id="build-another">
 				<form name="myform" method="POST" action="${pageContext.request.contextPath}/search">
