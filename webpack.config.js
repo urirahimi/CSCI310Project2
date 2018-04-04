@@ -13,6 +13,10 @@ module.exports = {
     path: distDir,
     filename: outputFilename,
   },
+  node: {
+    child_process: 'empty',
+    fs: 'empty'
+  },
 
   module: {
    loaders: [

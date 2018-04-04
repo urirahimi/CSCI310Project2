@@ -6,8 +6,8 @@
  */
 
 import { config } from './config';
-
-import * as firebase from 'firebase';
+const firebase = require('firebase');
+// import * as firebase from 'firebase';
 
 // [START User]
 export class User {
@@ -34,7 +34,7 @@ export class User {
             }
             else {
               // no user is signed in
-              console.log("Unfortunately, no user is signed in.");
+              // console.log("Unfortunately, no user is signed in.");
               reject();
             }
           });
@@ -55,7 +55,7 @@ export class User {
           }
           else {
             // no user is signed in
-            console.log("Unfortunately, no user is signed in.");
+            // console.log("Unfortunately, no user is signed in.");
             reject();
           }
         });
