@@ -114,7 +114,7 @@
 	  		</div>
 			<br>
 			<br>
-				<div class="dropdown">
+				<div class="Heightdropdown">
 				Enter Height: 
 					<select>
 						  <option value="50">50</option>
@@ -130,7 +130,7 @@
 						  <option value="3000">3000</option>
 					</select>
 				</div>
-				<div class="dropdown">
+				<div class="Widthdropdown">
 				Enter Width: 
 					<select>
 						  <option value="50">50</option>
