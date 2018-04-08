@@ -114,11 +114,48 @@
 	  		</div>
 			<br>
 			<br>
+				<div class="dropdown">
+				Enter Height: 
+					<select>
+						  <option value="50">50</option>
+						  <option value="100">100</option>
+						  <option value="150">150</option>
+						  <option value="200">200</option>
+						  <option value="300">300</option>
+						  <option value="500">500</option>
+						  <option value="1000">1000</option>
+						  <option value="1500">1500</option>
+						  <option value="2000">2000</option>
+						  <option value="2500">2500</option>
+						  <option value="3000">3000</option>
+					</select>
+				</div>
+				<div class="dropdown">
+				Enter Width: 
+					<select>
+						  <option value="50">50</option>
+						  <option value="100">100</option>
+						  <option value="150">150</option>
+						  <option value="200">200</option>
+						  <option value="300">300</option>
+						  <option value="500">500</option>
+						  <option value="1000">1000</option>
+						  <option value="1500">1500</option>
+						  <option value="2000">2000</option>
+						  <option value="2500">2500</option>
+						  <option value="3000">3000</option>
+					</select>
+				</div>
+			<br>
+			<br>
+			
 			<!--  The form that contains the two input elements -->
 			<form name="myform" method="POST" action="${pageContext.request.contextPath}/search">
 				<div class="input-div"> 
  				<input id="topic-input" type="text" name="topic" placeholder="Enter topic" onkeyup="if(this.value.length != 0) {submit.disabled = false} else {submit.disabled = true}"/><br/> 
  			</div>  
+ 			<br>
+ 			<br>
 			<div class="input-div"> 
 <!--  				<input class="submitButton" id="submitButton" type="submit" name="submit" value="Build Collage" disabled/> -->
  				<input type="submit" name="submitButton" id="topicSubmit" value="Build Collage">
@@ -127,6 +164,7 @@
 			<br>
 			<br>
 			<button type="button" name="saveButton" id="saveButton" onclick="alert('This should save the collage I guess')">Save Collage</button>	
+		
 		
 
 		</div>
