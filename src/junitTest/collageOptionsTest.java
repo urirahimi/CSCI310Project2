@@ -11,7 +11,7 @@ public class collageOptionsTest {
 	@Test
 	public void collagePixelsTest() {
 		List<BufferedImage> images = new ArrayList<BufferedImage>();
-		AssertTrue(!buildCollage(images, 'A', "sepia", true, true, 799, 799));
+		AssertTrue(!buildCollage(images, 'A', "sepia", true, true, 799, 799)); //testing
 		AssertTrue(!buildCollage(images, 'A', "sepia", true, true, 799, 800));
 		AssertTrue(!buildCollage(images, 'A', "sepia", true, true, 800, 799));
 		AssertTrue(buildCollage(images, 'A', "sepia", true, true, 800, 800)); //success
