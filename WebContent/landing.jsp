@@ -53,7 +53,7 @@
 					toggle between hiding and showing the dropdown content */
 					function collageOptionsFunction() {
 					    document.getElementById("myDropdown2").classList.toggle("show");
-					    console.log("devin");
+					    /* console.log("devin"); */
 					}
 					
 					// Close the dropdown if the user clicks outside of it
@@ -73,16 +73,16 @@
 			</script>
 	</head>
 <body>
-<h1 id="title"> <center>BroGrammers! </center> </h1>
+<h1 id="title"> <center> Collage Generator </center> </h1>
 		<div id="container">
 			
-			<div class="dropdown"> 
-				<button onclick="dropFunc()" class="dropbtn" id="collage-shape-dropdown-menu">Select Shape</button>
-				  <div id="myDropdown" class="dropdown-content">
-				    <a >Shape 1</a>
-				    <a >Shape 2</a>
-				    <a >Shape 3</a>
-				  </div>
+				<div class="dropdown"> 
+				<!-- 	<button onclick="dropFunc()" class="dropbtn" id="collage-shape-dropdown-menu">Select Shape</button>
+					  <div id="myDropdown" class="dropdown-content">
+					    <a >Shape 1</a>
+					    <a >Shape 2</a>
+					    <a >Shape 3</a>
+				  </div> -->
 				<button onclick="collageOptionsFunction()" class="dropbtn" id="collage-options-dropdown-menu">Collage Options</button>
 				  <div id="myDropdown2" class="dropdown-content">
 				    <a>Photo Rotation</a>
@@ -130,6 +130,7 @@
 						  <option value="3000">3000</option>
 					</select>
 				</div>
+				<br>
 				<div class="Widthdropdown">
 				Enter Width: 
 					<select>
@@ -152,10 +153,14 @@
 			<!--  The form that contains the two input elements -->
 			<form name="myform" method="POST" action="${pageContext.request.contextPath}/search">
 				<div class="input-div"> 
- 				<input id="topic-input" type="text" name="topic" placeholder="Enter topic" onkeyup="if(this.value.length != 0) {submit.disabled = false} else {submit.disabled = true}"/><br/> 
- 			</div>  
+	 				<input id="topic-input" type= "text" name="topic" placeholder="Enter Topic" onkeyup="if(this.value.length != 0) {submit.disabled = false} else {submit.disabled = true}"/><br/> 
+	 			</div>  
  			<br>
- 			<br>
+ 				<div class="input-div"> 
+	 				<input id="shape-input" type="text" name="shape" placeholder="Enter Shape" onkeyup="if(this.value.length != 0) {submit.disabled = false} else {submit.disabled = true}"/><br/> 
+	 			</div>  
+	 			<br>
+ 				<br>
 			<div class="input-div"> 
 <!--  				<input class="submitButton" id="submitButton" type="submit" name="submit" value="Build Collage" disabled/> -->
  				<input type="submit" name="submitButton" id="topicSubmit" value="Build Collage">
@@ -163,7 +168,7 @@
 			</form>
 			<br>
 			<br>
-			<button type="button" name="saveButton" id="saveButton" onclick="alert('This should save the collage I guess')">Save Collage</button>	
+			<!-- <button type="button" name="saveButton" id="saveButton" onclick="alert('This should save the collage I guess')">Save Collage</button>	 -->
 		
 		
 
