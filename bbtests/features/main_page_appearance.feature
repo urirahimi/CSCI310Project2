@@ -9,4 +9,8 @@ Scenario: I am navigating to the main page
     Then A button for saving collages is shown
     Then A dropdown menu for collage shape is shown collapsed
     Then A dropdown menu for collage options is shown collapsed
-    
+        But The dropdown menu contains several options for collage generation 
+        But The dropdown menu contains an option for photo rotation
+        But The dropdown menu contains an option for photo borders
+        But The dropdown menu contains an option for sepia
+        But The dropdown menu contains an option for grayscale

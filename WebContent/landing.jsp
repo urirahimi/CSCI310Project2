@@ -30,7 +30,7 @@
 					/* When the user clicks on the button, 
 					toggle between hiding and showing the dropdown content */
 					function dropFunc() {
-					    document.getElementById("myDropdown").classList.toggle("show");
+					    document.getElementById("collage-shape-dropdown-options").classList.toggle("show");
 					}
 					
 					// Close the dropdown if the user clicks outside of it
@@ -52,7 +52,7 @@
 					/* When the user clicks on the button, 
 					toggle between hiding and showing the dropdown content */
 					function collageOptionsFunction() {
-					    document.getElementById("myDropdown2").classList.toggle("show");
+					    document.getElementById("collage-options-dropdown-options").classList.toggle("show");
 					    console.log("devin");
 					}
 					
@@ -78,13 +78,13 @@
 			
 			<div class="dropdown"> 
 				<button onclick="dropFunc()" class="dropbtn" id="collage-shape-dropdown-menu">Select Shape</button>
-				  <div id="myDropdown" class="dropdown-content">
+				  <div id="collage-shape-dropdown-options" class="dropdown-content">
 				    <a >Shape 1</a>
 				    <a >Shape 2</a>
 				    <a >Shape 3</a>
 				  </div>
 				<button onclick="collageOptionsFunction()" class="dropbtn" id="collage-options-dropdown-menu">Collage Options</button>
-				  <div id="myDropdown2" class="dropdown-content">
+				  <div id="collage-options-dropdown-options" class="dropdown-content">
 				    <a>Photo Rotation</a>
 				    		<label class="switch">
 						  <input type="checkbox">
