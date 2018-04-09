@@ -68,7 +68,6 @@
 				<span class="slider round"></span>
 			</label>
 		</div>
-	</div>
 	<br>
 	<br>
 	<div class="Heightdropdown">
@@ -128,8 +127,6 @@
 	</form>
 	<br>
 	<br>
-
-	</div>
 
 </body>
 </html>
