@@ -19,6 +19,11 @@ import javax.imageio.ImageIO;
 public class CollageBuilder {
 	// The public interface exposed to the public. Used to create the logic to construct a collage
 	public static BufferedImage buildCollage(List<BufferedImage> images) {
+		
+		//30 Images, width and height, divided into 3 by 3 blocks. Determine number of images per block,
+		// then determine number of images per block, then determine height and width of images, then place
+		// images in their appropriate blocks.
+		
 		// formatImages is a helper function used to format images (resize, add border)
 		images = formatImages(images);
         int wid = 800;
