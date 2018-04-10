@@ -19,10 +19,10 @@ public class JDBC {
 		ResultSet rs = null;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost/Game?user=root&password=root&useSSL=false");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost/collage?user=root&password=root&useSSL=false");
 			st = conn.createStatement();
 			ps = conn.prepareStatement("SELECT * FROM UserInfo WHERE username=? and passwords=?");
-			ps.setString(1, "ddaher");
+			ps.setString(1, "daher");
 			ps.setString(2, "devin1");
 			rs = ps.executeQuery();
 			while (rs.next()) {
