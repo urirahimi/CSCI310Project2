@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="./css/signin.css" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="text/javascript" src="./js/backend.js"></script>
+<script type="text/javascript">
+const LOGIN_MODAL_ID = "login-modal";
+
+function displayModal ()
+{
+	document.getElementById("login-modal").style.display = 'inline';
+}
+
+function hideModal ()
+{
+	document.getElementById("login-modal").style.display = 'none';
+}
+</script>
+<script type="text/javascript">
+/**
+ * Checks for whether the provided email and password exists in Firebase.
+ */
+function onLoginFormSubmit ()
+{
+	let email = document.getElementById("login-modal-email-input").value;
+	let password = document.getElementById("login-modal-password-input").value;
+	
+	FirebaseDB.User.signIn(email, password)
+		.then(() => {
+			window.location.replace("landing.jsp");
+		})
+		.catch(err => {
+		document.getElementById("login-error-message").innerHTML = err.message;
+		})
+	
+	return false;
+}
+</script>
+</head>
+<body>
+	<h1 class="header-text">Collage Generation Application</h1>
+	
+	<!-- Login Modal -->
+	<form class="modal-content animate" id="login-modal-form" onsubmit="return onLoginFormSubmit();">
+		<div class="imgcontainer">
+			<span onclick="hideModal();" class="close" title="Close Modal">&times;</span>
+		</div>
+
+		<div class="container">
+			<!-- Email field -->
+			<label for="email"><b>Email</b></label>
+			<input class="login-modal-text-input" id="login-modal-email-input" type="text" placeholder="Enter email" name="email" required>
+
+			<!-- Password field -->
+			<label for="password"><b>Password</b></label>
+			<input class="login-modal-text-input" id="login-modal-password-input" type="password" placeholder="Enter Password" name="password" required>
+
+			<!-- Login button -->
+			<button type="submit" id="login-modal-submission">Login</button>
+			
+			<!-- Any errors when logging in will be displayed here -->
+			<p id="login-error-message"><p>
+		</div>
+	</form>
+	
+	<!-- When the user clicks anywhere outside of the modal, close it -->
+	<script type="text/javascript">
+		// Get the modal
+		var modal = document.getElementById('login-modal');
+		
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function (event) {
+			if (event.target == modal) {
+				modal.style.display = "none";
+			}
+		}
+	</script>
+</body>
+</html>

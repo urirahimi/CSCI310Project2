@@ -1,0 +1,42 @@
+{
+  "name": "csci310project2",
+  "version": "1.0.0",
+  "description": "",
+  "directories": {
+    "test": "WebContent/js/test"
+  },
+  "scripts": {
+    "build": "webpack --progress",
+    "clean": "rm -r WebContent/js/backend/build",
+    "test": "mocha-webpack test -R spec --recursive",
+    "test-watch": "mocha-webpack test -R spec --recursive --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/urirahimi/CSCI310Project2.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/urirahimi/CSCI310Project2/issues"
+  },
+  "homepage": "https://github.com/urirahimi/CSCI310Project2#readme",
+  "dependencies": {
+    "firebase": "^4.12.1",
+    "fsevents": "^1.1.3"
+  },
+  "devDependencies": {
+    "assert": "^1.4.1",
+    "babel-cli": "^6.24.0",
+    "babel-core": "^6.24.1",
+    "babel-loader": "^6.4.1",
+    "babel-preset-es2015": "^6.24.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "expose-loader": "^0.7.3",
+    "mocha": "^5.0.5",
+    "mocha-webpack": "^1.1.0",
+    "path": "^0.12.7",
+    "unit.js": "^2.0.0",
+    "webpack": "^2.3.3",
+    "xmlhttprequest": "^1.8.0"
+  }
+}
