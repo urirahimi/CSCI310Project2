@@ -25,6 +25,8 @@ hs_err_pid*
 
 # ECLIPSE
 .settings/
+.classpath
+.project
 build/
 **/.DS_Store
 
