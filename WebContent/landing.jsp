@@ -28,8 +28,7 @@
 	/* When the user clicks on the button, 
 	toggle between hiding and showing the dropdown content */
 	function collageOptionsFunction() {
-		document.getElementById("collage-options-dropdown-options").classList
-				.toggle("show");
+		document.getElementById("collage-options-dropdown-options").classList.toggle("show");
 	}
 
 	// Close the dropdown if the user clicks outside of it
@@ -110,13 +109,13 @@
 		<div class="input-div">
 			<input id="topic-input" type="text" name="topic"
 				placeholder="Enter Topic"
-				onkeyup="if(this.value.length != 0) {submit.disabled = false} else {submit.disabled = true}" /><br />
+				onkeyup="if(this.value.length != 0) {submitButton.disabled = false} else {submitButton.disabled = true}" /><br />
 		</div>
 		<br>
 		<div class="input-div">
 			<input id="shape-input" type="text" name="shape"
 				placeholder="Enter Shape"
-				onkeyup="if(this.value.length != 0) {submit.disabled = false} else {submit.disabled = true}" /><br />
+				onkeyup="if(this.value.length != 0) {submitButton.disabled = false} else {submitButton.disabled = true}" /><br />
 		</div>
 		<br> <br>
 		<div class="input-div">
