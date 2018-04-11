@@ -1,0 +1,116 @@
+@charset "UTF-8";
+
+body {
+	background-color: white;
+}
+
+#outside-div {
+    margin: auto;
+    width: 800px;  
+}
+
+#title {
+	text-align: center;
+	clear: both;
+	display: block;
+}
+
+#collage {
+	margin: auto;
+ 	position: relative;
+    overflow: hidden;
+    display:block;
+    clear: both;
+    height: 600px;
+	width: 800px;
+}
+
+h1 {
+	font-size: 24pt;
+}
+
+::placeholder { /* Most modern browsers support this now. */
+   color: #CDCDCD;
+   opacity:  1;
+}
+
+#main-img {
+	height: 600px;
+	width: 800px;
+	display: block;
+}
+
+#build-another {
+ 	height: 80px;
+    width: 500px;
+    position: relative;
+    left: 50%;
+    margin-top: 20px;
+    margin-left: -200px;
+    overflow: hidden;
+    display:block; 
+    
+}
+
+#input{
+	border: 2px solid;
+	border-color: #A9A9A9;
+	width: 300px;
+	height: 37px;
+	margin: 0px;
+	text-align: center;
+}
+
+#build-button {
+	background-color: #A9A9A9;
+	color: white;
+	height: 40px;
+	width: 150px;
+	margin: 0px;
+	text-align: center;
+	display: inline-block;
+}
+
+#export-button {
+	background-color: #A9A9A9;
+	color: white;
+	height: 40px;
+	width: 150px;
+	margin: 0px;
+	text-align: center;
+	display: inline-block;
+	float: right;
+}
+
+.input-div {
+	display:inline-block;
+}
+
+#previous-collages {
+	position: relative;
+	overflow-x: scroll;
+   	overflow-y: hidden;   
+	height: 230px;
+	width: 670px;
+	border: 1px solid black;
+	margin: 0 64.5px;
+	white-space: nowrap;
+	display: inline-block;
+}
+
+.prevs-div {
+	display:inline-block;
+	whitespace: nowrap;
+}
+
+.prevs-img {
+	height: 200px;
+	width: 200px;
+	margin: 10px;
+}
+
+#error {
+	font-size: 18px;
+	text-align: center;
+	line-height: 600px;
+}
