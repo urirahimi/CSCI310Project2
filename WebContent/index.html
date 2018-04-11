@@ -25,7 +25,6 @@ function onLoginFormSubmit ()
 {
 	let email = document.getElementById("login-modal-email-input").value;
 	let password = document.getElementById("login-modal-password-input").value;
-	// window.location.replace("landing.html");
 	
 	FirebaseDB.User.signIn(email, password)
 		.then(() => {

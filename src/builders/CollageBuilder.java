@@ -116,37 +116,37 @@ public class CollageBuilder
 		}
 		else if (c == 'm') {
 			forbiddenGridLocations = new Integer[] {
-					// TODO
+			        2, 3, 4, 8, 12, 14, 17, 19, 22, 23, 24, 27, 28, 29
 			};
 		}
 		else if (c == 'n') {
 			forbiddenGridLocations = new Integer[] {
-					// TODO
+			        2, 3, 4, 8, 9, 12, 14, 17, 19, 22, 23, 27, 28, 29
 			};
 		}
 		else if (c == 'o') {
 			forbiddenGridLocations = new Integer[] {
-					// TODO
+			        7, 8, 9, 12, 13, 14, 17, 18, 19, 22, 23, 24
 			};
 		}
 		else if (c == 'p') {
 			forbiddenGridLocations = new Integer[] {
-					// TODO
+			        7, 8, 9, 12, 13, 14, 22, 23, 24, 25, 27, 28, 29, 30
 			};
 		}
 		else if (c == 'q') {
 			forbiddenGridLocations = new Integer[] {
-					// TODO
+			        7, 8, 9, 12, 13, 14, 21, 22, 23, 24, 26, 27, 28, 29
 			};
 		}
 		else if (c == 'r') {
 			forbiddenGridLocations = new Integer[] {
-					// TODO
+			        7, 8, 9, 17, 19, 20, 22, 23, 25, 27, 28, 29
 			};
 		}
 		else if (c == 's') {
 			forbiddenGridLocations = new Integer[] {
-					// TODO
+			        7, 8, 9, 10, 11, 13, 14, 15, 16, 17, 19, 20, 21, 22, 23, 25
 			};
 		}
 		else if (c == 't') {

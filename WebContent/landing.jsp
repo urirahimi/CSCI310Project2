@@ -9,19 +9,20 @@
 <script>
 	// Enables and disables the button depending on whether text is entered
 	function enableButton() {
-		if (document.topicForm.topicInput.value.length > 0) {
-			document.topicForm.submitButton.disabled = false;
-		} else {
-			document.topicForm.submitButton.disabled = true;
+		if (document.myform.topic.value.length <= 0 && document.myform.shape.value.length <= 0) {
+			document.myform.submitButton.disabled = true;
+		}
+		else {
+			document.myform.submitButton.disabled = false;
 		}
 	}
 	// Callback function when the form is submitted
 	function submitTopic() {
-		sessionStorage.setItem('topic', document.topicForm.topicInput.value);
+	        sessionStorage.setItem('topic', document.myform.topic.value);
 	}
 	// Call enableButton() after page loads, in case the user decides to go back
 	window.addEventListener("DOMContentLoaded", function() {
-		enableButton();
+	        enableButton();
 	}, false);
 </script>
 <script>
@@ -44,6 +45,65 @@
 				}
 			}
 		}
+	}
+</script>
+<script>
+	/**
+	 * Helper function for POST method.
+	 *
+	 * @author Rakesh Pai
+	 * @since September 25, 2008
+	 * @url https://stackoverflow.com/questions/133925/javascript-post-request-like-a-form-submit
+	 */
+	function post(path, params, method) {
+	    method = method || "post"; // Set method to post by default if not specified.
+	
+	    // The rest of this code assumes you are not using a library.
+	    // It can be made less wordy if you use one.
+	    var form = document.createElement("form");
+	    form.setAttribute("method", method);
+	    form.setAttribute("action", path);
+	
+	    for(var key in params) {
+	        if(params.hasOwnProperty(key)) {
+	            var hiddenField = document.createElement("input");
+	            hiddenField.setAttribute("type", "hidden");
+	            hiddenField.setAttribute("name", key);
+	            hiddenField.setAttribute("value", params[key]);
+	
+	            form.appendChild(hiddenField);
+	        }
+	    }
+	
+	    document.body.appendChild(form);
+	    form.submit();
+	}
+	
+	function validateShapeInput ()
+	{
+		var isValidShape = false;
+		shape = document.getElementById("shape-input").value.toLowerCase();
+		
+		if (shape.length == 0) { // empty shape
+			isValidShape = true;
+		}
+		else if (shape.length == 1 && "abcdefghijklmnopqrstuvwxyz".includes(shape)) {
+			isValidShape = true;
+		}
+		
+		var errorMessage = document.getElementById("invalid-shape-input-error-message");
+		if (!isValidShape) {
+			errorMessage.innerHTML = "Invalid shape input. Must be 1 of the 26 letters in the alphabet.";
+		}
+		else {
+			errorMessage.innerHTML = "";
+			post("${pageContext.request.contextPath}/search", {
+				topic: document.myform.topic.value,
+				shape: document.myform.shape.value,
+			});
+		}
+		
+		return false;
 	}
 </script>
 </head>
@@ -104,8 +164,7 @@
 	<br>
 
 	<!--  The form that contains the two input elements -->
-	<form name="myform" method="POST"
-		action="${pageContext.request.contextPath}/search">
+	<form name="myform" onsubmit="return validateShapeInput();">
 		<div class="input-div">
 			<input id="topic-input" type="text" name="topic"
 				placeholder="Enter Topic"
@@ -117,15 +176,17 @@
 				placeholder="Enter Shape"
 				onkeyup="if(this.value.length != 0) {submitButton.disabled = false} else {submitButton.disabled = true}" /><br />
 		</div>
-		<br> <br>
+		<br />
+		<br />
 		<div class="input-div">
-			<!--  				<input class="submitButton" id="submitButton" type="submit" name="submit" value="Build Collage" disabled/> -->
-			<input type="submit" name="submitButton" id="topicSubmit"
-				value="Build Collage">
+			<input type="submit" name="submitButton" id="topicSubmit" value="Build Collage">
 		</div>
 	</form>
-	<br>
-	<br>
+
+	<!-- Error message, in case shape input is invalid -->
+	<br />
+	<br />
+	<span id="invalid-shape-input-error-message" style="color: red;"></span>
 
 </body>
 </html>
