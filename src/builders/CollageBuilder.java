@@ -204,8 +204,8 @@ public class CollageBuilder
 		g2.fillRect(0, 0, collageWidth, collageHeight);
 		// draw image
 		g2.setColor(oldColor);
-		int currX = -80;
-		int currY = -20;
+		int currX = startingX;
+		int currY = startingY;
 		Random random = new Random();
 
 		Integer[] forbiddenLocations = new Integer[] {};

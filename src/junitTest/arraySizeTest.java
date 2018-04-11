@@ -14,6 +14,5 @@ public class arraySizeTest {
 		assertEquals(arraySize, 10); //switch the 10 to number of collages?
 	}
 	
-	public void 
 
 }

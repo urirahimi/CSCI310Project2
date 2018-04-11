@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import org.junit.Test;
 
 public class testingOut {
-
+	
 	@Test
 	public void testAddAndGet1() {
 	    ArrayList <Integer> list = new ArrayList <Integer>();
