@@ -16,6 +16,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.sun.javafx.geom.Shape;
+
 import builders.CollageBuilder;
 import services.ImageService;
 import utilities.Pair;
@@ -40,6 +42,13 @@ public class MosaicsServlet extends HttpServlet {
 //		}
 		long startTime = System.currentTimeMillis();
 		String query = request.getParameter("topic");
+		String letterShape = request.getParameter("shape");
+		String filter = request.getParameter("filter");
+		Character letter = null;
+		if (letterShape != null && !letterShape.isEmpty()) {
+			letter = letterShape.charAt(0);
+		}
+
 		List<BufferedImage> images = null; 
 		BufferedImage collage = null;
 		
@@ -51,7 +60,9 @@ public class MosaicsServlet extends HttpServlet {
 		
 		// If valid collage
 		if (images != null && images.size() >= 30) {
-			collage = CollageBuilder.buildCollage(images);
+			// if no shape is inputed, letter == null
+			// therefore no forbidden grids in the 5x6 grid
+			collage = CollageBuilder.buildCollage(images, letter, true, filter);
 			request.getSession().setAttribute("collage", collage);
 			request.getSession().setAttribute("query", query);
 			request.getSession().setAttribute("error", false);
