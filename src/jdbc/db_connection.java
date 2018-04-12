@@ -8,9 +8,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Types;
 
-public class JDBC {
+public class db_connection {
 
 	public static void main (String[] args) {
+		System.out.println("HERERERERERERRERERER");
 		//check sql database for this username and if password matches
 		Connection conn = null;
 		Statement st = null;
@@ -19,6 +20,7 @@ public class JDBC {
 		PreparedStatement colorPrep = null;
 		ResultSet rs = null;
 		try {
+			
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection("jdbc:mysql://localhost/collage?user=root&password=root&useSSL=false");
 			st = conn.createStatement();
@@ -65,14 +67,13 @@ public class JDBC {
 		try {
 			System.out.println ("inside jdbc try function");
 			Class.forName("com.mysql.jdbc.Driver");
-			System.out.println ("after driver class declaration");
+			//System.out.println ("after driver class declaration");
 			conn = DriverManager.getConnection("jdbc:mysql://localhost/collage?user=root&password=root&useSSL=false");
-			System.out.println ("after driver connection?");
+			//System.out.println ("after driver connection?");
 			st = conn.createStatement();
 			ps = conn.prepareStatement("SELECT * FROM UserInfo WHERE username=? and passwords=?");
 			ps.setString(1, userName);
 			ps.setString(2, password);
-			System.out.println ("SO WHERE WE AT?!");
  			rs = ps.executeQuery();
  			while (rs.next()) {
  				System.out.println ("HERE?!!!!!!!");

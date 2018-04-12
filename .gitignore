@@ -31,3 +31,4 @@ build/
 # NODE
 node_modules/
 /target/
+.classpath

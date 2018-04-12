@@ -1,4 +1,4 @@
-<%@page import="jdbc.JDBC"%>
+<%@page import="jdbc.db_connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -21,25 +21,6 @@ function hideModal ()
 }
 </script>
 <script type="text/javascript">
-/**
- * Checks for whether the provided email and password exists in Firebase.
- */
-/* function onLoginFormSubmit ()
-{
-	let email = document.getElementById("login-modal-email-input").value;
-	let password = document.getElementById("login-modal-password-input").value;
-	// window.location.replace("landing.html");
-	
-	FirebaseDB.User.signIn(email, password)
-		.then(() => {
-			window.location.replace("landing.jsp");
-		})
-		.catch(err => {
-		document.getElementById("login-error-message").innerHTML = err.message;
-		})
-	
-	return false;
-} */
 function onLoginFormSubmit()
 {
 	var requeststr = "Validation?";
@@ -52,6 +33,28 @@ function onLoginFormSubmit()
 	if(xhttp.responseText.trim().length > 0){
 		document.getElementById("err_message").innerHTML = xhttp.responseText;
 		return false;
+	}
+	else{
+		xhttp.close();
+		//hideModal();
+	}
+}
+function onRegisterFormSubmit()
+{
+	var requeststr = "Validation?";
+	requeststr += "&email="+ document.getElementById("login-modal-email-input").value;
+	requeststr += "&password="+ document.getElementById("login-modal-password-input").value;
+	//console.log(requeststr);
+	var xhttp = new XMLHttpRequest();
+	xhttp.open("GET", requeststr, false);
+	xhttp.send();
+	if(xhttp.responseText.trim().length > 0){
+		document.getElementById("err_message").innerHTML = xhttp.responseText;
+		return false;
+	}
+	else{
+		xhttp.close();
+		//hideModal();
 	}
 }
 </script>
@@ -77,6 +80,7 @@ function onLoginFormSubmit()
 
 			<!-- Login button -->
 			<button type="submit" id="login-modal-submission">Login</button>
+			<!-- <button type="submit" id="register-modal-submission">Register</button> -->
 			
 			<!-- Any errors when logging in will be displayed here -->
 			<p id="login-error-message"><p>

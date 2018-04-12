@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import jdbc.JDBC;
+import jdbc.db_connection;
 
 /**
  * Servlet implementation class Validation
@@ -21,19 +21,10 @@ public class Validation extends HttpServlet {
 	    	String password = request.getParameter("password");
 	    	String email = request.getParameter("email");
 	    	PrintWriter pw = response.getWriter();
-	    JDBC sqlDB = new JDBC();
+	    db_connection sqlDB = new db_connection();
 	    System.out.println("are we here?");
 	    if(sqlDB.login(email, password)) {
-	    		System.out.println("are we here after function?");
-	    		//response.sendRedirect("http://www.google.com");
-	    		//response.sendRedirect("/landing.html");
-	    		ServletContext sc = getServletContext();
-	    		try {
-					sc.getRequestDispatcher("/landing.jsp").forward(request, response);
-				} catch (ServletException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+	    		response.sendRedirect("landing.jsp");
 	    }else{
 	    		pw.print("Invalid login");
 		    	pw.flush();
