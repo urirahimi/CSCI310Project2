@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+<%@page import="jdbc.JDBC"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="./css/signin.css" />
@@ -21,7 +24,7 @@ function hideModal ()
 /**
  * Checks for whether the provided email and password exists in Firebase.
  */
-function onLoginFormSubmit ()
+/* function onLoginFormSubmit ()
 {
 	let email = document.getElementById("login-modal-email-input").value;
 	let password = document.getElementById("login-modal-password-input").value;
@@ -36,6 +39,36 @@ function onLoginFormSubmit ()
 		})
 	
 	return false;
+} */
+function onLoginFormSubmit()
+{
+	var requeststr = "Validation?";
+	requeststr += "&email="+ document.getElementById("login-modal-email-input").value;
+	requeststr += "&password="+ document.getElementById("login-modal-password-input").value;
+	console.log(requeststr);
+	window.alert("we lit so far");
+	var xhttp = new XMLHttpRequest();
+	xhttp.open("GET", requeststr, false);
+	xhttp.send();
+	if(xhttp.responseText.trim().length > 0){
+		document.getElementById("err_message").innerHTML = xhttp.responseText;
+		return false;
+	}
+	window.alert("and now...");
+	let email = document.getElementById("login-modal-email-input").value;
+	let password = document.getElementById("login-modal-password-input").value;
+	// window.location.replace("landing.html");
+	/* window.alert("we lit so far");
+	//var sqlDB = new Packages.jdbc;
+	window.alert("we lit so far2");[]
+	window.alert("and now..."); */
+	/* if(sqlDB.login(email, password)){
+		console.log("AYYY");
+		return true;
+	}
+	else{
+		return false;	
+	} */
 }
 </script>
 </head>

@@ -25,6 +25,7 @@ public class JDBC {
 			ps = conn.prepareStatement("SELECT * FROM UserInfo WHERE username=? and passwords=?");
 			ps.setString(1, "daher");
 			ps.setString(2, "devin2");
+			//boolean wahtever= login("lkj","113414");
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				String user = rs.getString("username");
