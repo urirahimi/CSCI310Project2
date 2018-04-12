@@ -45,8 +45,7 @@ function onLoginFormSubmit()
 	var requeststr = "Validation?";
 	requeststr += "&email="+ document.getElementById("login-modal-email-input").value;
 	requeststr += "&password="+ document.getElementById("login-modal-password-input").value;
-	console.log(requeststr);
-	window.alert("we lit so far");
+	//console.log(requeststr);
 	var xhttp = new XMLHttpRequest();
 	xhttp.open("GET", requeststr, false);
 	xhttp.send();
@@ -54,25 +53,11 @@ function onLoginFormSubmit()
 		document.getElementById("err_message").innerHTML = xhttp.responseText;
 		return false;
 	}
-	window.alert("and now...");
-	let email = document.getElementById("login-modal-email-input").value;
-	let password = document.getElementById("login-modal-password-input").value;
-	// window.location.replace("landing.html");
-	/* window.alert("we lit so far");
-	//var sqlDB = new Packages.jdbc;
-	window.alert("we lit so far2");[]
-	window.alert("and now..."); */
-	/* if(sqlDB.login(email, password)){
-		console.log("AYYY");
-		return true;
-	}
-	else{
-		return false;	
-	} */
 }
 </script>
 </head>
 <body>
+<p style="color: red;font-weight:bold" id = "err_message"></p>
 	<h1 class="header-text">Collage Generation Application</h1>
 	
 	<!-- Login Modal -->

@@ -30,6 +30,16 @@
 	<classpathentry kind="lib" path="/Users/dmdaher/Desktop/Junit File/hamcrest-core-1.3.jar"/>
 	<classpathentry kind="lib" path="/Users/dmdaher/Desktop/Junit File/junit-4.12.jar"/>
 	<classpathentry kind="lib" path="/Users/dmdaher/Desktop/Selenium/selenium-server-standalone-3.11.0 (1).jar"/>
-	<classpathentry kind="lib" path="/Users/dmdaher/Desktop/SQL Scripts/mysql-connector-java-5.1.46/mysql-connector-java-5.1.46-bin.jar"/>
+	<classpathentry kind="lib" path="/Users/dmdaher/Desktop/SQL Scripts/mysql-connector-java-5.1.46/mysql-connector-java-5.1.46-bin.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/dmdaher/Desktop/SQL Scripts/mysql-connector-java-5.1.46/mysql-connector-java-5.1.46.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="src/jdbc/JDBC.java"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

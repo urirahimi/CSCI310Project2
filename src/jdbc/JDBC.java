@@ -25,7 +25,6 @@ public class JDBC {
 			ps = conn.prepareStatement("SELECT * FROM UserInfo WHERE username=? and passwords=?");
 			ps.setString(1, "daher");
 			ps.setString(2, "devin2");
-			//boolean wahtever= login("lkj","113414");
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				String user = rs.getString("username");
@@ -64,14 +63,19 @@ public class JDBC {
 		PreparedStatement colorPrep = null;
 		ResultSet rs = null;
 		try {
+			System.out.println ("inside jdbc try function");
 			Class.forName("com.mysql.jdbc.Driver");
+			System.out.println ("after driver class declaration");
 			conn = DriverManager.getConnection("jdbc:mysql://localhost/collage?user=root&password=root&useSSL=false");
+			System.out.println ("after driver connection?");
 			st = conn.createStatement();
 			ps = conn.prepareStatement("SELECT * FROM UserInfo WHERE username=? and passwords=?");
 			ps.setString(1, userName);
 			ps.setString(2, password);
+			System.out.println ("SO WHERE WE AT?!");
  			rs = ps.executeQuery();
  			while (rs.next()) {
+ 				System.out.println ("HERE?!!!!!!!");
  				String user = rs.getString("username");
  				String pass = rs.getString("passwords");
  				System.out.println ("username = " + user);
