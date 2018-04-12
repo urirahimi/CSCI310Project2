@@ -310,6 +310,22 @@ public class CollageBuilder
 			    }
 
 		}
+		else if(filter.equals("blackandwhite"))
+		{
+		    BufferedImage result = new BufferedImage(collageWidth, collageHeight, BufferedImage.TYPE_BYTE_GRAY);
+		    result.getGraphics().drawImage(collageImage, 0, 0, null);
+		    WritableRaster raster = result.getRaster();
+		    int[] pixels = new int[collageImage.getWidth()];
+		    for (int y = 0; y < collageImage.getHeight(); y++) {
+		        raster.getPixels(0, y, collageImage.getWidth(), 1, pixels);
+		        for (int i = 0; i < pixels.length; i++) {
+		            if (pixels[i] < 126) pixels[i] = 0;
+		            else pixels[i] = 255;
+		        }
+		        raster.setPixels(0, y, collageImage.getWidth(), 1, pixels);
+		    }
+		    collageImage=result;
+		}
 
 		assert (images.size() == 30);
 		g2.dispose();
