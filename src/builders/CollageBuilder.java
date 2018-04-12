@@ -4,8 +4,11 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.color.ColorSpace;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
+import java.awt.image.ColorConvertOp;
+import java.awt.image.WritableRaster;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
@@ -189,7 +192,7 @@ public class CollageBuilder
 	}
 
 	// The public interface used to create the logic to construct a collage
-	public static BufferedImage buildCollage (List<BufferedImage> images, Character shape, Boolean rotate)
+	public static BufferedImage buildCollage (List<BufferedImage> images, Character shape, Boolean rotate, String filter)
 	{
 		// formatImages is a helper function used to format images (resize, add border)
 		images = formatImages(images);
@@ -260,12 +263,125 @@ public class CollageBuilder
 
 			gridLocation++;
 		}
+		if(filter.equals("grayscale"))
+		{
+			collageImage=toGrayScale(collageImage);
+		}
+		else if(filter.equals("sepia"))
+		{
+			 for(int y = 0; y < collageHeight; y++){
+			      for(int x = 0; x < collageWidth; x++){
+			        int p = collageImage.getRGB(x,y);
+
+			        int a = (p>>24)&0xff;
+			        int r = (p>>16)&0xff;
+			        int g = (p>>8)&0xff;
+			        int b = p&0xff;
+
+			        //calculate tr, tg, tb
+			        int tr = (int)(0.393*r + 0.769*g + 0.189*b);
+			        int tg = (int)(0.349*r + 0.686*g + 0.168*b);
+			        int tb = (int)(0.272*r + 0.534*g + 0.131*b);
+
+			        //check condition
+			        if(tr > 255){
+			          r = 255;
+			        }else{
+			          r = tr;
+			        }
+
+			        if(tg > 255){
+			          g = 255;
+			        }else{
+			          g = tg;
+			        }
+
+			        if(tb > 255){
+			          b = 255;
+			        }else{
+			          b = tb;
+			        }
+
+			        //set new RGB value
+			        p = (a<<24) | (r<<16) | (g<<8) | b;
+
+			        collageImage.setRGB(x, y, p);
+			      }
+			    }
+
+		}
 
 		assert (images.size() == 30);
 		g2.dispose();
 		return collageImage;
 	}
+	 public static BufferedImage toGrayScale(BufferedImage master) {
+	        BufferedImage gray = new BufferedImage(master.getWidth(), master.getHeight(), BufferedImage.TYPE_INT_ARGB);
 
+	        // Automatic converstion....
+	        ColorConvertOp op = new ColorConvertOp(ColorSpace.getInstance(ColorSpace.CS_GRAY), null);
+	        op.filter(master, gray);
+
+	        return gray;
+	    }
+
+	    public static BufferedImage toSepia(BufferedImage img, int sepiaIntensity) {
+
+	        BufferedImage sepia = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_RGB);
+	        // Play around with this.  20 works well and was recommended
+	        //   by another developer. 0 produces black/white image
+	        int sepiaDepth = 20;
+
+	        int w = img.getWidth();
+	        int h = img.getHeight();
+
+	        WritableRaster raster = sepia.getRaster();
+
+	        // We need 3 integers (for R,G,B color values) per pixel.
+	        int[] pixels = new int[w * h * 3];
+	        img.getRaster().getPixels(0, 0, w, h, pixels);
+
+	        //  Process 3 ints at a time for each pixel.  Each pixel has 3 RGB
+	        //    colors in array
+	        for (int i = 0; i < pixels.length; i += 3) {
+	            int r = pixels[i];
+	            int g = pixels[i + 1];
+	            int b = pixels[i + 2];
+
+	            int gry = (r + g + b) / 3;
+	            r = g = b = gry;
+	            r = r + (sepiaDepth * 2);
+	            g = g + sepiaDepth;
+
+	            if (r > 255) {
+	                r = 255;
+	            }
+	            if (g > 255) {
+	                g = 255;
+	            }
+	            if (b > 255) {
+	                b = 255;
+	            }
+
+	            // Darken blue color to increase sepia effect
+	            b -= sepiaIntensity;
+
+	            // normalize if out of bounds
+	            if (b < 0) {
+	                b = 0;
+	            }
+	            if (b > 255) {
+	                b = 255;
+	            }
+
+	            pixels[i] = r;
+	            pixels[i + 1] = g;
+	            pixels[i + 2] = b;
+	        }
+	        raster.setPixels(0, 0, w, h, pixels);
+
+	        return sepia;
+	    }
 	/**
 	 * Formatting an image is defined as: (1) resizing an image, (2) adding a border
 	 * to the same image from (1)

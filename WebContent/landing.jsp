@@ -100,6 +100,7 @@
 			post("${pageContext.request.contextPath}/search", {
 				topic: document.myform.topic.value,
 				shape: document.myform.shape.value,
+				filter: document.myform.filter.value
 			});
 		}
 		
@@ -119,13 +120,7 @@
 				type="checkbox"> <span class="slider round"></span>
 			</label> <a>Photo Borders</a> <label class="switch"> <input
 				type="checkbox"> <span class="slider round"></span>
-			</label> <a>Sepia</a> <label class="switch"> <input type="checkbox">
-				<span class="slider round"></span>
-			</label> <a>Grayscale</a> <label class="switch"> <input
-				type="checkbox"> <span class="slider round"></span>
-			</label> <a>Rainbow</a> <label class="switch"> <input type="checkbox">
-				<span class="slider round"></span>
-			</label>
+			</label> 
 		</div>
 	<br>
 	<br>
@@ -175,6 +170,9 @@
 			<input id="shape-input" type="text" name="shape"
 				placeholder="Enter Shape"
 				onkeyup="if(this.value.length != 0) {submitButton.disabled = false} else {submitButton.disabled = true}" /><br />
+		</div>
+		<div class="input-div">
+			<label for="contactChoice1">Sepia</label><input id="filter-input" type="radio" name="filter" value="sepia"/><label for="contactChoice1">Grayscale</label> <input id="filter-input" type="radio" name="filter" value="grayscale"/><label for="contactChoice1">None</label><input id="filter-input" type="radio" name="filter" value="none"/> <br />
 		</div>
 		<br />
 		<br />

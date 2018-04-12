@@ -43,7 +43,7 @@ public class MosaicsServlet extends HttpServlet {
 		long startTime = System.currentTimeMillis();
 		String query = request.getParameter("topic");
 		String letterShape = request.getParameter("shape");
-		
+		String filter = request.getParameter("filter");
 		Character letter = null;
 		if (letterShape != null && !letterShape.isEmpty()) {
 			letter = letterShape.charAt(0);
@@ -62,7 +62,7 @@ public class MosaicsServlet extends HttpServlet {
 		if (images != null && images.size() >= 30) {
 			// if no shape is inputed, letter == null
 			// therefore no forbidden grids in the 5x6 grid
-			collage = CollageBuilder.buildCollage(images, letter, true);
+			collage = CollageBuilder.buildCollage(images, letter, true, filter);
 			request.getSession().setAttribute("collage", collage);
 			request.getSession().setAttribute("query", query);
 			request.getSession().setAttribute("error", false);

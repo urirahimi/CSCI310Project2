@@ -33,12 +33,12 @@ public class ImageService
 	// (query)
 	public static List<BufferedImage> getImages (String query)
 	{
-//		String url = "https://api.qwant.com/api/search/images?count=50&q=" + query;
-//		String jsonString = getJSONStringFromQwantRequest(url);
-//		JsonArray imageJson = loadJsonStringToArray(jsonString);
-//		List<BufferedImage> images = loadBufferedImagesFromJson(imageJson);
-		
-		File dir = new File("/Users/eddowh/Desktop/csci310images");
+		String url = "https://api.qwant.com/api/search/images?count=50&q=" + query;
+		String jsonString = getJSONStringFromQwantRequest(url);
+		JsonArray imageJson = loadJsonStringToArray(jsonString);
+		List<BufferedImage> images = loadBufferedImagesFromJson(imageJson);
+		return images;
+ /*
 		String[] EXTENSIONS = new String[] {
 				"jpg", "jpeg", "gif", "png", "bmp" // and other formats you need
 		};
@@ -71,7 +71,7 @@ public class ImageService
             }
         }
 	    assert(images.size() == 30);
-		return images;
+		return images;*/
 	}
 
 	// Helper function to perform JSON logic to obtain a JSONString from url
