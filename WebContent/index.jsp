@@ -41,9 +41,10 @@ function onLoginFormSubmit()
 }
 function onRegisterFormSubmit()
 {
-	var requeststr = "Validation?";
-	requeststr += "&email="+ document.getElementById("login-modal-email-input").value;
-	requeststr += "&password="+ document.getElementById("login-modal-password-input").value;
+	console.log("Gets Heres");
+	var requeststr = "Registration?";
+	requeststr += "&email="+ document.getElementById("register-modal-email-input").value;
+	requeststr += "&password="+ document.getElementById("register-modal-password-input").value;
 	//console.log(requeststr);
 	var xhttp = new XMLHttpRequest();
 	xhttp.open("GET", requeststr, false);
@@ -54,7 +55,6 @@ function onRegisterFormSubmit()
 	}
 	else{
 		xhttp.close();
-		//hideModal();
 	}
 }
 </script>
@@ -65,10 +65,6 @@ function onRegisterFormSubmit()
 	
 	<!-- Login Modal -->
 	<form class="modal-content animate" id="login-modal-form" onsubmit="return onLoginFormSubmit();">
-		<div class="imgcontainer">
-			<span onclick="hideModal();" class="close" title="Close Modal">&times;</span>
-		</div>
-
 		<div class="container">
 			<!-- Email field -->
 			<label for="email"><b>Email</b></label>
@@ -81,11 +77,27 @@ function onRegisterFormSubmit()
 			<!-- Login button -->
 			<button type="submit" id="login-modal-submission">Login</button>
 			<!-- <button type="submit" id="register-modal-submission">Register</button> -->
-			
 			<!-- Any errors when logging in will be displayed here -->
 			<p id="login-error-message"><p>
 		</div>
 	</form>
+		<button onclick="document.getElementById('id01').style.display='block'" style="width:100%;">Register</button>
+	<div id="id01" class="modal">
+	  <form class="modal-content animate" onsubmit="return onRegisterFormSubmit();">
+	    <div class="container">
+	      <label for="uname"><b>Username</b></label>
+	      <input type="text" id="register-modal-email-input" placeholder="Enter Username" name="uname" required>
+	      <label for="psw"><b>Password</b></label>
+	      <input type="password" id="register-modal-password-input" placeholder="Enter Password" name="psw" required>  
+	      <button type="submit">Register</button>
+
+	    </div>
+	
+	    <div class="container" style="background-color:#f1f1f1">
+	      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+	    </div>
+	  </form>
+</div>
 	
 	<!-- When the user clicks anywhere outside of the modal, close it -->
 	<script type="text/javascript">
@@ -99,5 +111,6 @@ function onRegisterFormSubmit()
 			}
 		}
 	</script>
+	
 </body>
 </html>

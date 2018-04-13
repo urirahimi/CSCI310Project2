@@ -99,7 +99,7 @@ public class db_connection {
 		ResultSet rs = null;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost/Game?user=root&password=root&useSSL=false");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost/collage?user=root&password=root&useSSL=false");
 			st = conn.createStatement();
 			ps = conn.prepareStatement("SELECT * FROM UserInfo WHERE username=?");
 			ps.setString(1, username);
