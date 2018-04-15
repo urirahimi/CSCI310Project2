@@ -11,7 +11,7 @@ public class loginTest {
 		Assert.assertTrue(test.login("daher", "devin2")); //right username AND password
 		Assert.assertTrue(!test.login("dev", "devin2")); //wrong username and right password
 	}
-	
+	@Test
 	public void loginPasswordTest() {
 		Assert.assertTrue(!test.login("daher", "1234567")); //wrong password
 	}
