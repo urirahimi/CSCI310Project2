@@ -1,4 +1,4 @@
-<%@page import="jdbc.JDBC"%>
+<%@page import="jdbc.db_connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -21,32 +21,12 @@ function hideModal ()
 }
 </script>
 <script type="text/javascript">
-/**
- * Checks for whether the provided email and password exists in Firebase.
- */
-/* function onLoginFormSubmit ()
-{
-	let email = document.getElementById("login-modal-email-input").value;
-	let password = document.getElementById("login-modal-password-input").value;
-	// window.location.replace("landing.html");
-	
-	FirebaseDB.User.signIn(email, password)
-		.then(() => {
-			window.location.replace("landing.jsp");
-		})
-		.catch(err => {
-		document.getElementById("login-error-message").innerHTML = err.message;
-		})
-	
-	return false;
-} */
 function onLoginFormSubmit()
 {
 	var requeststr = "Validation?";
 	requeststr += "&email="+ document.getElementById("login-modal-email-input").value;
 	requeststr += "&password="+ document.getElementById("login-modal-password-input").value;
-	console.log(requeststr);
-	window.alert("we lit so far");
+	//console.log(requeststr);
 	var xhttp = new XMLHttpRequest();
 	xhttp.open("GET", requeststr, false);
 	xhttp.send();
@@ -54,33 +34,37 @@ function onLoginFormSubmit()
 		document.getElementById("err_message").innerHTML = xhttp.responseText;
 		return false;
 	}
-	window.alert("and now...");
-	let email = document.getElementById("login-modal-email-input").value;
-	let password = document.getElementById("login-modal-password-input").value;
-	// window.location.replace("landing.html");
-	/* window.alert("we lit so far");
-	//var sqlDB = new Packages.jdbc;
-	window.alert("we lit so far2");[]
-	window.alert("and now..."); */
-	/* if(sqlDB.login(email, password)){
-		console.log("AYYY");
-		return true;
+	else{
+		xhttp.close();
+		//hideModal();
+	}
+}
+function onRegisterFormSubmit()
+{
+	console.log("Gets Heres");
+	var requeststr = "Registration?";
+	requeststr += "&email="+ document.getElementById("register-modal-email-input").value;
+	requeststr += "&password="+ document.getElementById("register-modal-password-input").value;
+	//console.log(requeststr);
+	var xhttp = new XMLHttpRequest();
+	xhttp.open("GET", requeststr, false);
+	xhttp.send();
+	if(xhttp.responseText.trim().length > 0){
+		document.getElementById("err_message").innerHTML = xhttp.responseText;
+		return false;
 	}
 	else{
-		return false;	
-	} */
+		xhttp.close();
+	}
 }
 </script>
 </head>
 <body>
+<p style="color: red;font-weight:bold" id = "err_message"></p>
 	<h1 class="header-text">Collage Generation Application</h1>
 	
 	<!-- Login Modal -->
 	<form class="modal-content animate" id="login-modal-form" onsubmit="return onLoginFormSubmit();">
-		<div class="imgcontainer">
-			<span onclick="hideModal();" class="close" title="Close Modal">&times;</span>
-		</div>
-
 		<div class="container">
 			<!-- Email field -->
 			<label for="email"><b>Email</b></label>
@@ -92,11 +76,28 @@ function onLoginFormSubmit()
 
 			<!-- Login button -->
 			<button type="submit" id="login-modal-submission">Login</button>
-			
+			<!-- <button type="submit" id="register-modal-submission">Register</button> -->
 			<!-- Any errors when logging in will be displayed here -->
 			<p id="login-error-message"><p>
 		</div>
 	</form>
+		<button onclick="document.getElementById('id01').style.display='block'" style="width:100%;">Register</button>
+	<div id="id01" class="modal">
+	  <form class="modal-content animate" onsubmit="return onRegisterFormSubmit();">
+	    <div class="container">
+	      <label for="uname"><b>Username</b></label>
+	      <input type="text" id="register-modal-email-input" placeholder="Enter Username" name="uname" required>
+	      <label for="psw"><b>Password</b></label>
+	      <input type="password" id="register-modal-password-input" placeholder="Enter Password" name="psw" required>  
+	      <button type="submit">Register</button>
+
+	    </div>
+	
+	    <div class="container" style="background-color:#f1f1f1">
+	      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+	    </div>
+	  </form>
+</div>
 	
 	<!-- When the user clicks anywhere outside of the modal, close it -->
 	<script type="text/javascript">
@@ -110,5 +111,6 @@ function onLoginFormSubmit()
 			}
 		}
 	</script>
+	
 </body>
 </html>
