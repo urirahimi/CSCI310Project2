@@ -105,8 +105,9 @@ public class db_connection {
 			ps.setString(1, username);
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				System.out.println("checking if username = username" + rs.getString("username"));
+				System.out.println("checking if username = " + rs.getString("username"));
 				if(rs.getString("username").equals(username)) {
+					System.out.println("it does...");
 					return false;
 				}
 			}
