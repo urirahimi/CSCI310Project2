@@ -1,0 +1,12 @@
+Feature: Login page appearance
+    The login page has to have an appearance identical to what's specified by the stakeholders.
+
+  Scenario: I am navigating to the login page # login_appearance.feature:4
+    Given I am looking at the login page      # step_definitions/login_appearance_steps.rb:6
+    Then An input field for email is shown    # step_definitions/login_appearance_steps.rb:10
+    Then An input field for password is shown # step_definitions/login_appearance_steps.rb:15
+    Then A button for logging in is shown     # step_definitions/login_appearance_steps.rb:20
+
+1 scenario (1 passed)
+4 steps (4 passed)
+0m0.815s

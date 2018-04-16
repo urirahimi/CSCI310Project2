@@ -13,6 +13,7 @@
 <link rel="stylesheet" type="text/css" href="./css/CollageDisplay.css" />
 </head>
 <body>
+
 	<%
 		// converts BufferedImage into Image src
 		String b64 = "";
@@ -111,5 +112,10 @@
 			%>
 
 		</div>
+		<script language="javascript" type="text/javascript">
+     $(window).load(function() {
+     $('#loading').hide();
+  });
+</script>
 </body>
 </html>

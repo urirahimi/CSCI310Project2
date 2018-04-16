@@ -1,0 +1,15 @@
+Feature: Collage page appearance
+    The collage page has to have an appearance identical to what's specified by the stakeholders.
+
+  Scenario: I am navigating to the collage page                                        # collage_page_appearance.feature:4
+    Given I am looking at the collage page                                             # step_definitions/collage_page_appearance_steps.rb:8
+    Then An export collage button is shown                                             # step_definitions/collage_page_appearance_steps.rb:16
+    Then An input box for re-entering a topic is shown                                 # step_definitions/collage_page_appearance_steps.rb:21
+    But The input box for topic has placeholder text                                   # step_definitions/collage_page_appearance_steps.rb:26
+    Then A rectangle that displays miniaturized images of previous collages generated. # step_definitions/collage_page_appearance_steps.rb:31
+    Then A collage is shown if there are sufficient images.                            # step_definitions/collage_page_appearance_steps.rb:36
+    Then An error message is shown if there are insufficient images.                   # step_definitions/collage_page_appearance_steps.rb:41
+
+1 scenario (1 passed)
+7 steps (7 passed)
+0m11.872s

@@ -46,7 +46,7 @@ end
 Then ("The dropdown menu contains several options for collage generation") do
   collage_options_dropdown_options = browser.div(:id, "collage-options-dropdown-options")
   expect(collage_options_dropdown_options.exists?).to eq(true)
-  expect(collage_options_dropdown_options.as.size).to eq(5)
+  expect(collage_options_dropdown_options.as.size).to eq(2)
 end
 
 Then ("The dropdown menu contains an option for photo rotation") do
@@ -65,32 +65,6 @@ end
 Then ("The dropdown menu contains an option for photo borders") do
   collage_options_dropdown_options = browser.div(:id, "collage-options-dropdown-options")
   option_tag = "Photo Borders"
-  option_found = false
-  for option in collage_options_dropdown_options.as
-    if option.inner_html.include? option_tag
-      option_found = true
-      break
-    end
-  end
-  expect(option_found).to eq(true)
-end
-
-Then ("The dropdown menu contains an option for sepia") do
-  collage_options_dropdown_options = browser.div(:id, "collage-options-dropdown-options")
-  option_tag = "Sepia"
-  option_found = false
-  for option in collage_options_dropdown_options.as
-    if option.inner_html.include? option_tag
-      option_found = true
-      break
-    end
-  end
-  expect(option_found).to eq(true)
-end
-
-Then ("The dropdown menu contains an option for grayscale") do
-  collage_options_dropdown_options = browser.div(:id, "collage-options-dropdown-options")
-  option_tag = "Grayscale"
   option_found = false
   for option in collage_options_dropdown_options.as
     if option.inner_html.include? option_tag

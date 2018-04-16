@@ -13,5 +13,3 @@ Scenario: I am navigating to the main page
         But The dropdown menu contains several options for collage generation 
         But The dropdown menu contains an option for photo rotation
         But The dropdown menu contains an option for photo borders
-        But The dropdown menu contains an option for sepia
-        But The dropdown menu contains an option for grayscale
