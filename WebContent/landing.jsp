@@ -96,6 +96,7 @@
 			errorMessage.innerHTML = "Invalid shape input. Must be 1 of the 26 letters in the alphabet.";
 		}
 		else {
+			 document.getElementById("loading").style.display="block";
 			errorMessage.innerHTML = "";
 			post("${pageContext.request.contextPath}/search", {
 				topic: document.myform.topic.value,
@@ -109,6 +110,9 @@
 </script>
 </head>
 <body>
+<div id="loading" style="display: none;">
+  <img id="loading-image" src="./images/ajax-loader.gif" alt="Loading..." />
+</div>
 	<h1 id="title">
 		<center>Collage Generator</center>
 	</h1>
