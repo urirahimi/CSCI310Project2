@@ -1,0 +1,21 @@
+Feature: Login page functionality
+    In order to login to access collage generation functionality, credentials have to be entered
+
+  Scenario: I am navigating to the login page                    # login_functionality.feature:4
+    Given I am on the login page                                 # step_definitions/login_functionality_steps.rb:8
+    Then The input field for email should be required            # step_definitions/login_functionality_steps.rb:12
+    Then The input field for password should be required         # step_definitions/login_functionality_steps.rb:17
+    When I enter an empty email and submit                       # step_definitions/login_functionality_steps.rb:22
+    Then I stay in the login page due to empty email input       # step_definitions/login_functionality_steps.rb:28
+    When I enter an empty password and submit                    # step_definitions/login_functionality_steps.rb:32
+    Then I stay in the login page due to empty password input    # step_definitions/login_functionality_steps.rb:38
+    When I enter an email that isn't registered                  # step_definitions/login_functionality_steps.rb:42
+    Then An error message about non-existent email should appear # step_definitions/login_functionality_steps.rb:51
+    When I enter a registered email and the incorrect password   # step_definitions/login_functionality_steps.rb:56
+    Then An error message about incorrect password should appear # step_definitions/login_functionality_steps.rb:65
+    When I enter a registered email and the correct password     # step_definitions/login_functionality_steps.rb:70
+    Then I get redirected to the main page                       # step_definitions/login_functionality_steps.rb:79
+
+1 scenario (1 passed)
+13 steps (13 passed)
+0m5.567s

@@ -1,0 +1,19 @@
+Feature: Main page appearance
+    The main page has to have an appearance identical to what's specified by the stakeholders.
+
+  Scenario: I am navigating to the main page                              # main_page_appearance.feature:4
+    Given I am looking at the main page                                   # step_definitions/main_page_appearance_steps.rb:7
+    Then An input box for topic is shown                                  # step_definitions/main_page_appearance_steps.rb:11
+    But The input box for topic has placeholder text                      # step_definitions/main_page_appearance_steps.rb:16
+    Then An input box for shape is shown                                  # step_definitions/main_page_appearance_steps.rb:21
+    But The input box for shape has placeholder text                      # step_definitions/main_page_appearance_steps.rb:26
+    Then A button for building collages is shown                          # step_definitions/main_page_appearance_steps.rb:31
+    Then A button for saving collages is shown                            # step_definitions/main_page_appearance_steps.rb:36
+    Then A dropdown menu for collage options is shown collapsed           # step_definitions/main_page_appearance_steps.rb:41
+    But The dropdown menu contains several options for collage generation # step_definitions/main_page_appearance_steps.rb:46
+    But The dropdown menu contains an option for photo rotation           # step_definitions/main_page_appearance_steps.rb:52
+    But The dropdown menu contains an option for photo borders            # step_definitions/main_page_appearance_steps.rb:65
+
+1 scenario (1 passed)
+11 steps (11 passed)
+0m0.526s

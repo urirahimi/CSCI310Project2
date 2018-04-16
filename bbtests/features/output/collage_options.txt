@@ -1,0 +1,24 @@
+Feature: Collage page options
+    The collages generated have color themes based on the options shown.
+
+  Scenario: I am generating a collage with the photos rotated. # collage_options.feature:4
+    Given I am at the landing page                             # step_definitions/collage_options_steps.rb:1
+      TODO (Cucumber::Pending)
+      ./step_definitions/collage_options_steps.rb:2:in `"I am at the landing page"'
+      collage_options.feature:5:in `Given I am at the landing page'
+    When I select the Photo Rotation option                    # step_definitions/collage_options_steps.rb:5
+    And I submit a valid topic for a collage to be rotated     # step_definitions/collage_options_steps.rb:9
+    Then The collage generated should be rotated               # step_definitions/collage_options_steps.rb:13
+    When I select the Photo Borders option                     # collage_options.feature:9
+    And I submit a valid topic for a collage with borders      # step_definitions/collage_options_steps.rb:25
+    Then The collage generated should have borders around it   # step_definitions/collage_options_steps.rb:29
+    When I select the Sepia option                             # step_definitions/collage_options_steps.rb:33
+    And I submit a valid topic for a collage in sepia tone     # step_definitions/collage_options_steps.rb:37
+    Then The collage generated should be in sepia tone         # step_definitions/collage_options_steps.rb:41
+    When I select the Grayscale option                         # step_definitions/collage_options_steps.rb:45
+    And I submit a valid topic for a collage in grayscale      # step_definitions/collage_options_steps.rb:49
+    Then The collage generated should be in grayscale          # step_definitions/collage_options_steps.rb:53
+
+1 scenario (1 pending)
+13 steps (12 skipped, 1 pending)
+0m0.018s
