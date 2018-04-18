@@ -1,8 +1,8 @@
 require 'watir'
 require 'colorize'
 
-LOGIN_LINK = "http://localhost:8080/CSCI310Project2/index.html"
-LANDING_LINK = "http://localhost:8080/CSCI310Project2/landing.jsp"
+LOGIN_LINK = "http://localhost:8080/CSCI310/indexDeprecated.html"
+LANDING_LINK = "http://localhost:8080/CSCI310/landing.jsp"
 browser = Watir::Browser.new
 
 Given ("I am on the login page") do

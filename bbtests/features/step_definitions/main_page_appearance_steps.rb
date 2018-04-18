@@ -1,7 +1,7 @@
 require 'watir'
 require 'colorize'
 
-MAIN_LINK = "http://localhost:8080/CSCI310Project2/landing.jsp"
+MAIN_LINK = "http://localhost:8080/CSCI310/landing.jsp"
 browser = Watir::Browser.new
 
 Given ("I am looking at the main page") do

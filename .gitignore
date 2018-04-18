@@ -32,3 +32,8 @@ build/
 node_modules/
 /target/
 .classpath
+bbtests/features/step_definitions/collage_page_appearance_steps.rb
+*.rb
+bbtests/features/step_definitions/login_appearance_steps.rb
+bbtests/features/step_definitions/collage_page_appearance_steps.rb
+bbtests/features/step_definitions/main_page_appearance_steps.rb

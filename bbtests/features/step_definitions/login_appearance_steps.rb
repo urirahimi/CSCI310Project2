@@ -4,7 +4,7 @@ require 'colorize'
 browser = Watir::Browser.new
 
 Given ("I am looking at the login page") do
-    browser.goto "http://localhost:8080/CSCI310Project2/index.html"
+    browser.goto "http://localhost:8080/CSCI310/indexDeprecated.html"
 end
 
 Then ("An input field for email is shown") do

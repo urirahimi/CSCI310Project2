@@ -22,11 +22,11 @@ public class Registration extends HttpServlet {
 	    db_connection sqlDB = new db_connection();
 	    System.out.println("are we here?");
 	    if(sqlDB.signup(email, password)) {
-	    		response.sendRedirect("landing.jsp");
+	    		pw.print("VALID_REGISTRATION");
 	    }else{
 	    		pw.print("Invalid Registration");
-		    	pw.flush();
-			pw.close();
-	   }  
+	   }
+	    pw.flush();
+	    pw.close();
 	}
 }

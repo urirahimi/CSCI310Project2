@@ -1,8 +1,8 @@
 require 'watir'
 require 'colorize'
 
-MAIN_LINK = "http://localhost:8080/CSCI310Project2/landing.jsp"
-COLLAGE_LINK = "http://localhost:8080/CSCI310Project2/search"
+MAIN_LINK = "http://localhost:8080/CSCI310/landing.jsp"
+COLLAGE_LINK = "http://localhost:8080/CSCI310/search"
 browser = Watir::Browser.new
 
 Given("I am looking at the collage page") do

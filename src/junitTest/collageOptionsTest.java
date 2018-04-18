@@ -10,34 +10,33 @@ import builders.CollageBuilder;
 import services.ImageService;
 
 public class collageOptionsTest {
-
 	
-//	@Test
-//	public void collageFiltersTest() {
-//		List<BufferedImage> allImages = new ArrayList<BufferedImage>();
-//		List<BufferedImage> images = new ArrayList<BufferedImage>();
-//		allImages = ImageService.getImages("dog");
-//		for(int i = 0; i<30; i++) {
-//			images.add(allImages.get(i));
-//		}
-////		AssertNotEquals(buildCollage(images, 'A', "sepia", true, false, 800, 800), buildCollage(images, 'A', "grayscale", true, false, 800, 800));
-////		AssertNotEquals(buildCollage(images, 'A', "sepia", true, false, 800, 800), buildCollage(images, 'A', "black and white", true, false, 800, 800));
-////		AssertNotEquals(buildCollage(images, 'A', "grayscale", true, false, 800, 800), buildCollage(images, 'A', "black and white", true, false, 800, 800));
-////		AssertEquals(buildCollage(images, 'A', "sepia", true, false, 800, 800), buildCollage(images, 'A', "sepia", true, false, 800, 800));
-////		Assert.assertNotEquals(CollageBuilder.buildCollage(images, 'A', false, "sepia"), CollageBuilder.buildCollage(images, 'A', false, "grayscale")); //checks sepia and grayscale are different objects
-////		Assert.assertNotNull(CollageBuilder.buildCollage(images, 'A', false, "sepia")); //checks that the object created is not null
-////		Assert.assertNotEquals(CollageBuilder.buildCollage(images, 'A', false, "sepia"), CollageBuilder.buildCollage(images, 'A', false, "blackandwhite")); //checks if BW and sepia are different
-////		Assert.assertNotEquals(CollageBuilder.buildCollage(images, 'A', false, "grayscale"), CollageBuilder.buildCollage(images, 'A', false, "blackandwhite")); //checks if grayscale and BW are different
-//		BufferedImage sepiaImage = CollageBuilder.buildCollage(images, 'A', false, "sepia");
-//		BufferedImage sepiaImageTwo = CollageBuilder.buildCollage(images, 'A', false, "sepia");
-//		Assert.assertTrue(CollageBuilder.bufferedImagesEqual(sepiaImage,sepiaImageTwo));//checks if sepia and sepia are equal objects
-//		BufferedImage grayscaleImage = CollageBuilder.buildCollage(images, 'A', false, "grayscale");
-//		BufferedImage grayscaleImageTwo = CollageBuilder.buildCollage(images, 'A', false, "grayscale");
-//		Assert.assertTrue(CollageBuilder.bufferedImagesEqual(grayscaleImage,grayscaleImageTwo));//checks if grayscale and grayscale are equal objects
-//		BufferedImage bwImage = CollageBuilder.buildCollage(images, 'A', false, "blackandwhite");
-//		BufferedImage bwImageTwo = CollageBuilder.buildCollage(images, 'A', false, "blackandwhite");
-//		Assert.assertTrue(CollageBuilder.bufferedImagesEqual(bwImage,bwImageTwo));//checks if blackandwhite and blackandwhite are equal objects
-//	}
+	@Test
+	public void collageFiltersTest() {
+		List<BufferedImage> allImages = new ArrayList<BufferedImage>();
+		List<BufferedImage> images = new ArrayList<BufferedImage>();
+		allImages = ImageService.getImages("dog");
+		for(int i = 0; i<30; i++) {
+			images.add(allImages.get(i));
+		}
+//		AssertNotEquals(buildCollage(images, 'A', "sepia", true, false, 800, 800), buildCollage(images, 'A', "grayscale", true, false, 800, 800));
+//		AssertNotEquals(buildCollage(images, 'A', "sepia", true, false, 800, 800), buildCollage(images, 'A', "black and white", true, false, 800, 800));
+//		AssertNotEquals(buildCollage(images, 'A', "grayscale", true, false, 800, 800), buildCollage(images, 'A', "black and white", true, false, 800, 800));
+//		AssertEquals(buildCollage(images, 'A', "sepia", true, false, 800, 800), buildCollage(images, 'A', "sepia", true, false, 800, 800));
+//		Assert.assertNotEquals(CollageBuilder.buildCollage(images, 'A', false, "sepia"), CollageBuilder.buildCollage(images, 'A', false, "grayscale")); //checks sepia and grayscale are different objects
+//		Assert.assertNotNull(CollageBuilder.buildCollage(images, 'A', false, "sepia")); //checks that the object created is not null
+//		Assert.assertNotEquals(CollageBuilder.buildCollage(images, 'A', false, "sepia"), CollageBuilder.buildCollage(images, 'A', false, "blackandwhite")); //checks if BW and sepia are different
+//		Assert.assertNotEquals(CollageBuilder.buildCollage(images, 'A', false, "grayscale"), CollageBuilder.buildCollage(images, 'A', false, "blackandwhite")); //checks if grayscale and BW are different
+		BufferedImage sepiaImage = CollageBuilder.buildCollage(images, 'A', false, "sepia");
+		BufferedImage sepiaImageTwo = CollageBuilder.buildCollage(images, 'A', false, "sepia");
+		Assert.assertTrue(CollageBuilder.bufferedImagesEqual(sepiaImage,sepiaImageTwo));//checks if sepia and sepia are equal objects
+		BufferedImage grayscaleImage = CollageBuilder.buildCollage(images, 'A', false, "grayscale");
+		BufferedImage grayscaleImageTwo = CollageBuilder.buildCollage(images, 'A', false, "grayscale");
+		Assert.assertTrue(CollageBuilder.bufferedImagesEqual(grayscaleImage,grayscaleImageTwo));//checks if grayscale and grayscale are equal objects
+		BufferedImage bwImage = CollageBuilder.buildCollage(images, 'A', false, "blackandwhite");
+		BufferedImage bwImageTwo = CollageBuilder.buildCollage(images, 'A', false, "blackandwhite");
+		Assert.assertTrue(CollageBuilder.bufferedImagesEqual(bwImage,bwImageTwo));//checks if blackandwhite and blackandwhite are equal objects
+	}
 
 //	@Test
 //	public void collagePixelsTest() {

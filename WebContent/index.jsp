@@ -6,20 +6,6 @@
 <head>
 <link rel="stylesheet" type="text/css" href="./css/signin.css" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script type="text/javascript" src="./js/backend.js"></script>
-<script type="text/javascript">
-const LOGIN_MODAL_ID = "login-modal";
-
-function displayModal ()
-{
-	document.getElementById("login-modal").style.display = 'inline';
-}
-
-function hideModal ()
-{
-	document.getElementById("login-modal").style.display = 'none';
-}
-</script>
 <script type="text/javascript">
 function onLoginFormSubmit()
 {
@@ -30,14 +16,21 @@ function onLoginFormSubmit()
 	var xhttp = new XMLHttpRequest();
 	xhttp.open("GET", requeststr, false);
 	xhttp.send();
-	if(xhttp.responseText.trim().length > 0){
-		document.getElementById("err_message").innerHTML = xhttp.responseText;
-		return false;
+	console.log(xhttp.responseText.trim());
+	if (xhttp.responseText.trim() == "VALID_LOGIN") {
+		document.getElementById("login-error-message").innerHTML = "";
+		console.log("Hi!");
+		window.location.replace("landing.jsp");
+	}
+	else if (xhttp.responseText.trim().length > 0) {
+		document.getElementById("login-error-message").innerHTML = xhttp.responseText;
 	}
 	else{
 		xhttp.close();
-		//hideModal();
+		// hideModal();
 	}
+	
+	return false;
 }
 function onRegisterFormSubmit()
 {
@@ -49,18 +42,23 @@ function onRegisterFormSubmit()
 	var xhttp = new XMLHttpRequest();
 	xhttp.open("GET", requeststr, false);
 	xhttp.send();
-	if(xhttp.responseText.trim().length > 0){
-		document.getElementById("err_message").innerHTML = xhttp.responseText;
-		return false;
+	if (xhttp.responseText.trim() == "VALID_REGISTRATION") {
+		document.getElementById("registration-error-message").innerHTML = "";
+		window.location.replace("landing.jsp");
+	}
+	else if (xhttp.responseText.trim().length > 0) {
+		document.getElementById("registration-error-message").innerHTML = xhttp.responseText;
 	}
 	else{
 		xhttp.close();
+		// hideModal();
 	}
+	
+	return false;
 }
 </script>
 </head>
 <body>
-<p style="color: red;font-weight:bold" id = "err_message"></p>
 	<h1 class="header-text">Collage Generation Application</h1>
 	
 	<!-- Login Modal -->
@@ -80,9 +78,11 @@ function onRegisterFormSubmit()
 			<!-- Any errors when logging in will be displayed here -->
 			<p id="login-error-message"><p>
 		</div>
+		<p style="color: red; font-weight:bold; text-align: center;" id = "login-error-message"></p>
 	</form>
-		<button onclick="document.getElementById('id01').style.display='block'" style="width:100%;">Register</button>
-	<div id="id01" class="modal">
+	
+	<button onclick="document.getElementById('register-modal').style.display='block'" style="width:100%;">Register</button>
+	<div id="register-modal" class="modal">
 	  <form class="modal-content animate" onsubmit="return onRegisterFormSubmit();">
 	    <div class="container">
 	      <label for="uname"><b>Username</b></label>
@@ -90,27 +90,14 @@ function onRegisterFormSubmit()
 	      <label for="psw"><b>Password</b></label>
 	      <input type="password" id="register-modal-password-input" placeholder="Enter Password" name="psw" required>  
 	      <button type="submit">Register</button>
-
 	    </div>
 	
 	    <div class="container" style="background-color:#f1f1f1">
-	      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+	      <button type="button" onclick="document.getElementById('register-modal').style.display='none'" class="cancelbtn">Cancel</button>
 	    </div>
+	    <p style="color: red; font-weight:bold; text-align: center;" id = "registration-error-message"></p>
 	  </form>
-</div>
-	
-	<!-- When the user clicks anywhere outside of the modal, close it -->
-	<script type="text/javascript">
-		// Get the modal
-		var modal = document.getElementById('login-modal');
-		
-		// When the user clicks anywhere outside of the modal, close it
-		window.onclick = function (event) {
-			if (event.target == modal) {
-				modal.style.display = "none";
-			}
-		}
-	</script>
+    </div>
 	
 </body>
 </html>
