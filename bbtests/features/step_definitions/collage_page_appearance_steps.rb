@@ -18,6 +18,11 @@ Then("An export collage button is shown") do
   expect(export_collage_button.exists?).to eq(true)
 end
 
+Then("A save collage button is shown") do
+  save_collage_button = browser.button(:id, "save-button")
+  expect(save_collage_button.exists?).to eq(true)
+end
+
 Then("An input box for re-entering a topic is shown") do
   input_box = browser.text_field(:id, "input")
   expect(input_box.exists?).to eq(true)
