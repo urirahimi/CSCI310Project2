@@ -108,9 +108,6 @@
 </script>
 </head>
 <body>
-<div id="loading" style="display: none;">
-  <img id="loading-image" src="./images/ajax-loader.gif" alt="Loading..." />
-</div>
 	<h1 id="title">
 		<center>Collage Generator</center>
 	</h1>
@@ -182,6 +179,11 @@
 			<input type="submit" name="submitButton" id="topicSubmit" value="Build Collage">
 		</div>
 	</form>
+	
+	
+	<div id="loading" style="display: none;">
+	  <img id="loading-image" src="./images/ajax-loader.gif" alt="Loading..." />
+	</div>
 
 	<!-- Error message, in case shape input is invalid -->
 	<br />
