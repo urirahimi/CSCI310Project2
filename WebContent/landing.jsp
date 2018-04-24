@@ -171,7 +171,12 @@
 				onkeyup="if(this.value.length != 0) {submitButton.disabled = false} else {submitButton.disabled = true}" /><br />
 		</div>
 		<div class="input-div">
-			<label for="contactChoice1">Sepia</label><input id="filter-input" type="radio" name="filter" value="sepia"/><label for="contactChoice1">Grayscale</label> <input id="filter-input" type="radio" name="filter" value="grayscale"/><label for="contactChoice1">None</label><input id="filter-input" type="radio" name="filter" value="none"/> <br />
+			<label for="contactChoice1">Sepia</label>
+			<input id="filter-input" type="radio" name="filter" value="sepia" />
+			<label for="contactChoice1">Grayscale</label>
+			<input id="filter-input" type="radio" name="filter" value="grayscale" />
+			<label for="contactChoice1">None</label>
+			<input id="filter-input" type="radio" name="filter" value="none" /> <br />
 		</div>
 		<br />
 		<br />
@@ -180,8 +185,8 @@
 		</div>
 	</form>
 	
-	
-	<div id="loading" style="display: none;">
+	<!-- Loading symbol -->
+	<div id="loading" style="display: none; transform: scale(0.3);">
 	  <img id="loading-image" src="./images/ajax-loader.gif" alt="Loading..." />
 	</div>
 
