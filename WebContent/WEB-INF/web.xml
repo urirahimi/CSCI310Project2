@@ -19,4 +19,14 @@
     <servlet-name>Registration</servlet-name>
     <url-pattern>/Registration</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SaveServlet</display-name>
+    <servlet-name>SaveServlet</servlet-name>
+    <servlet-class>servlets.SaveServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SaveServlet</servlet-name>
+    <url-pattern>/SaveServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -2,13 +2,9 @@ package servlets;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.HashMap;
 import java.util.List;
 
-import javax.imageio.ImageIO;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,9 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.sun.javafx.geom.Shape;
-
 import builders.CollageBuilder;
+import services.ImageSaver;
 import services.ImageService;
 import utilities.Pair;
 
@@ -29,7 +24,7 @@ import utilities.Pair;
 @WebServlet("/search")
 public class MosaicsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+    
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		response.setContentType("image/png");
 		if(request.getSession().getAttribute("list") == null) {
@@ -63,12 +58,10 @@ public class MosaicsServlet extends HttpServlet {
 			// if no shape is inputed, letter == null
 			// therefore no forbidden grids in the 5x6 grid
 			collage = CollageBuilder.buildCollage(images, letter, true, filter);
+//			collage = CollageBuilder.buildCollage(images, letter, true, filter);
 			request.getSession().setAttribute("collage", collage);
 			request.getSession().setAttribute("query", query);
 			request.getSession().setAttribute("error", false);
-	     
-
-	  
 		} else {
 			request.getSession().setAttribute("error", true);
 		}

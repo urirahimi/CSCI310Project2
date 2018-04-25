@@ -5,6 +5,7 @@
 <%@page import="java.io.*"%>
 <%@page import="java.util.*"%>
 <%@page import="utilities.Pair"%>
+<%@ page import="services.ImageSaver" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -37,6 +38,7 @@
 		Pair buffer = list.get(list.size() - 1);
 		list.set(list.size() - 1, list.get(0));
 		list.set(0, buffer);
+		session.setAttribute("pair", pair);
 	%>
 	<script type="text/javascript">
 			function changeDisplayedImage(i) {
@@ -66,6 +68,29 @@
 					return true;
 				}
 			}
+			
+			function save() {
+				var requeststr = "SaveServlet?";	
+				
+				requeststr += "&save="+ ((Pair)document.getAttribute("pair")).toString();
+				var xhttp = new XMLHttpRequest();
+				xhttp.open("GET", requeststr, false);
+				xhttp.send();
+				console.log(xhttp.responseText.trim());
+				if (xhttp.responseText.trim() == "VALID_LOGIN") {
+					document.getElementById("login-error-message").innerHTML = "";
+					console.log("Hi!");
+					window.location.replace("CollageDisplay.jsp");
+				}
+				else if (xhttp.responseText.trim().length > 0) {
+					document.getElementById("login-error-message").innerHTML = xhttp.responseText;
+				}
+				else{
+					xhttp.close();
+					// hideModal();
+				}				
+				return false;
+			}
 		</script>
 	<div id="outside-div">
 		<div id="title">
@@ -78,6 +103,10 @@
 		<a id="export" download="collage.png" href="<%=b64%>"> <input
 			id="export-button" type="submit" value="Export Collage"
 			onclick="return check()">
+		</a>
+		<a id="save" href="<%=b64%>"> <input
+			id="save-button" type="submit" value="Save Collage"
+			onclick="return save()">
 		</a>
 		<div id="collage">
 			<img id="collage-image" src="<%=b64%>"

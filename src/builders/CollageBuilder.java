@@ -21,6 +21,8 @@ import java.util.Set;
 
 import javax.imageio.ImageIO;
 
+import services.ImageSaver;
+
 /**
  * A static class used to build collages given a list of images.
  * 
@@ -343,7 +345,8 @@ public class CollageBuilder
 
 		assert (images.size() == 30);
 		g2.dispose();
-		return collageImage;
+		return collageImage;//change TRUE to border boolean!
+		//return collageImage;
 	}
 	 public static BufferedImage toGrayScale(BufferedImage master) {
 	        BufferedImage gray = new BufferedImage(master.getWidth(), master.getHeight(), BufferedImage.TYPE_INT_ARGB);
