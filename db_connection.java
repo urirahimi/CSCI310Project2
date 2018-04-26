@@ -174,6 +174,107 @@ public class db_connection {
 		return true;
 	}
 	
+	//select the userID for the current user --- in this case "daher"
+		//find the imageCount for that user using the userID found
+		//then insert the pair image into the images field where the userID is the current user and the imageCount is incremented
+	public ArrayList<Pair> getImages() {
+		Connection conn = null;
+		Statement st = null;
+		PreparedStatement ps = null;
+		PreparedStatement ps2 = null;
+		PreparedStatement ps3 = null;
+		ResultSet rs = null;
+		ResultSet rs2 = null;
+		ResultSet rs3 = null;
+		ArrayList<Pair> pairs = new ArrayList<Pair>();
+		try {
+			//int imageCount = 0; //will need to maintain count number so should not be 0
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost/collage?user=root&password=root&useSSL=false");
+			st = conn.createStatement();
+			ps = conn.prepareStatement("SELECT userID FROM UserInfo WHERE username=?");
+			ps2 = conn.prepareStatement("SELECT imageCount FROM Image WHERE userID=?");				
+			ps3 = conn.prepareStatement("SELECT images FROM Image WHERE userID=?");
+			ps.setString(1, this.userName);
+			
+			rs = ps.executeQuery();
+			while (rs.next()) { //basically we are searching for all the userID with username daher or current user
+				//then we are finding the imageCount for that specific user
+				//then we are inserting the image in the image column that matches the current user's id
+				rs.getInt("userID");
+				ps3.setString(1, this.userName);
+				rs2 = ps.executeQuery();
+				while (rs2.next()) {
+					pairs.add(Pair.getPairFromFile(rs2.getString(1)));
+				}
+				//CHECK IF DIRECTORY EXISTS
+				//IF NOT, CREATE FILEPATH
+				//IF SO, ADD 1 and CREATE FILEPATH
+				//THEN IN DATABASE, INSERT INTO IMAGE TABLE
+				//THEN CHECK THAT USERID IN THE IMAGE TABLE
+				//AND GRAB THOSE IMAGES AND DISPLAY
+//					if(rs.getString("username").equals(userName)) {
+//						//p.saveImageToFile(userName + " /");
+//					}
+			}
+		} catch (SQLException sqle) {
+			System.out.println ("SQLException: " + sqle.getMessage());
+		} catch (ClassNotFoundException cnfe) {
+			System.out.println ("ClassNotFoundException: " + cnfe.getMessage());
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (st != null) {
+					st.close();
+				}
+				if (ps != null) {
+					ps.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException sqle) {
+				System.out.println("sqle: " + sqle.getMessage());
+			}
+		}
+		return pairs;
+	}
+	
+//	public String retrieveImages(String userName) {
+//		//this.userName = userName;
+//		Connection conn = null;
+//		Statement st = null;
+//		PreparedStatement ps = null;
+//		ResultSet rs = null;
+//        String bytes = "for testing...";
+//		try{
+//            Class.forName("com.mysql.jdbc.Driver");
+//            conn = DriverManager.getConnection("jdbc:mysql://localhost/collage?user=root&password=root&useSSL=false");
+//            File file = new File();
+//            FileOutputStream fos;
+//            //fos. //input the file pathname here
+//            byte b[];
+//            java.sql.Blob blob;
+//            ps = conn.prepareStatement("SELECT * FROM UserInfo WHERE username=?");
+//            ps.setString(1, userName);
+//            rs = ps.executeQuery();
+//            while(rs.next()){
+//                blob= rs.getBlob("images");
+//                b=blob.getBytes(1,(int)blob.length());
+////                fos.write(b);
+//                return bytes;
+//            }            
+//            ps.close();
+////            fos.close();
+//            conn.close();
+//            return bytes;
+//        }catch(Exception e){
+//            e.printStackTrace();
+//        }
+//		return bytes;
+//	}
 	
 	public boolean login(String userName, String password) {
 		this.userName = userName;
@@ -209,7 +310,6 @@ public class db_connection {
  		}
 		return false;
  	}
-	
 	public boolean signup(String username, String password) {
 		this.userName = username;
 		//check sql database for this username and if password matches
