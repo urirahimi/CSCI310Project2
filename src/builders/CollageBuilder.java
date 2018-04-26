@@ -21,8 +21,6 @@ import java.util.Set;
 
 import javax.imageio.ImageIO;
 
-import services.ImageSaver;
-
 /**
  * A static class used to build collages given a list of images.
  * 
@@ -33,8 +31,7 @@ public class CollageBuilder
 {
 	// Every final static member variables are in pixels
 	public final static int borderWidth = 3;
-	public final static int idealImageWidth = 420;
-	public final static int idealImageHeight = 240;
+
 	public final static int collageWidth = 800;
 	public final static int collageHeight = 600;
 
@@ -45,8 +42,7 @@ public class CollageBuilder
 	// Important fixed values for drawing collages
 	public final static int startingX = -80;
 	public final static int startingY = -20;
-	public final static int incrX = (collageWidth - 100) / 5; // 140
-	public final static int incrY = (collageHeight - 120) / 6; // 80
+
 	// Values considered "out of bounds"
 	public final static int oobX = 600;
 	public final static int oobY = 373;
@@ -73,132 +69,132 @@ public class CollageBuilder
 		// initialize forbidden grid locations (5x6 grid)
 		Integer[] forbiddenGridLocations = null;
 
-		if (c == 'a') {
+		if (c == 'A') {
 			forbiddenGridLocations = new Integer[] {
 			        7, 8, 9, 12, 13, 14, 22, 23, 24, 27, 28, 29
 			};
 		}
-		else if (c == 'b') {
+		else if (c == 'B') {
 			forbiddenGridLocations = new Integer[] {
 			        5, 7, 8, 9, 15, 17, 18, 19, 22, 23, 24, 30
 			};
 		}
-		else if (c == 'c') {
+		else if (c == 'C') {
 			forbiddenGridLocations = new Integer[] {
 			        7, 8, 9, 10, 12, 13, 14, 15, 17, 18, 19, 20, 22, 23, 24, 25
 			};
 		}
-		else if (c == 'd') {
+		else if (c == 'D') {
 			forbiddenGridLocations = new Integer[] {
 			        4, 5, 7, 8, 10, 12, 13, 14, 17, 18, 19, 22, 23, 25, 29, 30
 			};
 		}
-		else if (c == 'e') {
+		else if (c == 'E') {
 			forbiddenGridLocations = new Integer[] {
 			        7, 8, 9, 10, 14, 15, 19, 20, 22, 23, 24, 25
 			};
 		}
-		else if (c == 'f') {
+		else if (c == 'F') {
 			forbiddenGridLocations = new Integer[] {
 			        7, 8, 9, 10, 14, 15, 19, 20, 22, 23, 24, 25, 27, 28, 29, 30
 			};
 		}
-		else if (c == 'g') {
+		else if (c == 'G') {
 			forbiddenGridLocations = new Integer[] {
 			        7, 8, 9, 10, 12, 13, 14, 15, 17, 18, 22, 23, 24
 			};
 		}
-		else if (c == 'h') {
+		else if (c == 'H') {
 			forbiddenGridLocations = new Integer[] {
 			        2, 3, 4, 7, 8, 9, 22, 23, 24, 27, 28, 29
 			};
 		}
-		else if (c == 'i') {
+		else if (c == 'I') {
 			forbiddenGridLocations = new Integer[] {
 			        6, 7, 9, 10, 11, 12, 14, 15, 16, 17, 19, 20, 21, 22, 24, 25
 			};
 		}
-		else if (c == 'j') {
+		else if (c == 'J') {
 			forbiddenGridLocations = new Integer[] {
 			        6, 7, 9, 10, 11, 12, 14, 15, 17, 19, 20, 22, 24, 25, 29, 30
 			};
 		}
-		else if (c == 'k') {
+		else if (c == 'K') {
 			forbiddenGridLocations = new Integer[] {
 			        2, 3, 4, 7, 8, 10, 14, 15, 19, 20, 22, 23, 25, 27, 28, 29
 			};
 		}
-		else if (c == 'l') {
+		else if (c == 'L') {
 			forbiddenGridLocations = new Integer[] {
 			        2, 3, 4, 5, 7, 8, 9, 10, 12, 13, 14, 15, 17, 18, 19, 20, 22, 23, 24, 25
 			};
 		}
-		else if (c == 'm') {
+		else if (c == 'M') {
 			forbiddenGridLocations = new Integer[] {
 			        2, 3, 4, 8, 12, 14, 17, 19, 22, 23, 24, 27, 28, 29
 			};
 		}
-		else if (c == 'n') {
+		else if (c == 'N') {
 			forbiddenGridLocations = new Integer[] {
 			        2, 3, 4, 8, 9, 12, 14, 17, 19, 22, 23, 27, 28, 29
 			};
 		}
-		else if (c == 'o') {
+		else if (c == 'O') {
 			forbiddenGridLocations = new Integer[] {
 			        7, 8, 9, 12, 13, 14, 17, 18, 19, 22, 23, 24
 			};
 		}
-		else if (c == 'p') {
+		else if (c == 'P') {
 			forbiddenGridLocations = new Integer[] {
 			        7, 8, 9, 12, 13, 14, 22, 23, 24, 25, 27, 28, 29, 30
 			};
 		}
-		else if (c == 'q') {
+		else if (c == 'Q') {
 			forbiddenGridLocations = new Integer[] {
 			        7, 8, 9, 12, 13, 14, 21, 22, 23, 24, 26, 27, 28, 29
 			};
 		}
-		else if (c == 'r') {
+		else if (c == 'R') {
 			forbiddenGridLocations = new Integer[] {
 			        7, 8, 9, 17, 19, 20, 22, 23, 25, 27, 28, 29
 			};
 		}
-		else if (c == 's') {
+		else if (c == 'S') {
 			forbiddenGridLocations = new Integer[] {
 			        7, 8, 9, 10, 11, 13, 14, 15, 16, 17, 19, 20, 21, 22, 23, 25
 			};
 		}
-		else if (c == 't') {
+		else if (c == 'T') {
 			forbiddenGridLocations = new Integer[] {
 			        11, 12, 14, 15, 16, 17, 19, 20, 21, 22, 24, 25, 26, 27, 29, 30
 			};
 		}
-		else if (c == 'u') {
+		else if (c == 'U') {
 			forbiddenGridLocations = new Integer[] {
 			        2, 3, 4, 7, 8, 9, 12, 13, 14, 17, 18, 19, 22, 23, 24
 			};
 		}
-		else if (c == 'v') {
+		else if (c == 'V') {
 			forbiddenGridLocations = new Integer[] {
 			        2, 3, 4, 7, 8, 9, 11, 13, 15, 16, 18, 20, 21, 22, 24, 25, 26, 27, 29, 30
 			};
 		}
-		else if (c == 'w') {
+		else if (c == 'W') {
 			forbiddenGridLocations = new Integer[] {
 			        2, 3, 4, 7, 8, 9, 12, 13, 14, 17, 19, 22, 24
 			};
 		}
-		else if (c == 'x') {
+		else if (c == 'X') {
 			forbiddenGridLocations = new Integer[] {
 			        2, 3, 4, 6, 8, 10, 11, 12, 14, 15, 16, 17, 19, 20, 21, 23, 25, 27, 28, 29
 			};
 		}
-		else if (c == 'y') {
+		else if (c == 'Y') {
 			forbiddenGridLocations = new Integer[] {
 			        2, 3, 4, 7, 8, 9, 16, 17, 19, 20, 21, 22, 24, 25, 26, 27, 29, 30
 			};
 		}
-		else if (c == 'z') {
+		else if (c == 'Z') {
 			forbiddenGridLocations = new Integer[] {
 			        6, 7, 8, 10, 11, 12, 14, 15, 16, 17, 19, 20, 21, 23, 24, 25
 			};
@@ -208,19 +204,17 @@ public class CollageBuilder
 	}
 
 	// The public interface used to create the logic to construct a collage
-	public static BufferedImage buildCollage (List<BufferedImage> images, Character shape, Boolean rotate, String filter)
+	
+	private static BufferedImage buildImage(List<BufferedImage> images, int height, int width, Character shape, Boolean rotate)
 	{
-		// formatImages is a helper function used to format images (resize, add border)
-		images = formatImages(images);
-
-		// Create a new buffer and draw the images into the new image (collage)
-		BufferedImage collageImage = new BufferedImage(collageWidth, collageHeight, BufferedImage.TYPE_INT_ARGB);
-
+		BufferedImage collageImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+		int incrX = (width - 100) / 5; // 140
+		int incrY = (height - 120) / 6; // 80
 		Graphics2D g2 = collageImage.createGraphics();
 		Color oldColor = g2.getColor();
 		// Fill background with 'white'
 		g2.setPaint(Color.WHITE);
-		g2.fillRect(0, 0, collageWidth, collageHeight);
+		g2.fillRect(0, 0, width, height);
 		// draw image
 		g2.setColor(oldColor);
 		int currX = startingX;
@@ -259,7 +253,6 @@ public class CollageBuilder
 				}
 			}
 
-			System.out.format("Images placed: %s, Grid location: %s\n", imagesPlaced, gridLocation);
 
 			currX += incrX;
 			// if going out of bounds to the right
@@ -279,75 +272,57 @@ public class CollageBuilder
 
 			gridLocation++;
 		}
-		if(filter.equals("grayscale"))
-		{
-			collageImage=toGrayScale(collageImage);
-		}
-		else if(filter.equals("sepia"))
-		{
-			 for(int y = 0; y < collageHeight; y++){
-			      for(int x = 0; x < collageWidth; x++){
-			        int p = collageImage.getRGB(x,y);
-
-			        int a = (p>>24)&0xff;
-			        int r = (p>>16)&0xff;
-			        int g = (p>>8)&0xff;
-			        int b = p&0xff;
-
-			        //calculate tr, tg, tb
-			        int tr = (int)(0.393*r + 0.769*g + 0.189*b);
-			        int tg = (int)(0.349*r + 0.686*g + 0.168*b);
-			        int tb = (int)(0.272*r + 0.534*g + 0.131*b);
-
-			        //check condition
-			        if(tr > 255){
-			          r = 255;
-			        }else{
-			          r = tr;
-			        }
-
-			        if(tg > 255){
-			          g = 255;
-			        }else{
-			          g = tg;
-			        }
-
-			        if(tb > 255){
-			          b = 255;
-			        }else{
-			          b = tb;
-			        }
-
-			        //set new RGB value
-			        p = (a<<24) | (r<<16) | (g<<8) | b;
-
-			        collageImage.setRGB(x, y, p);
-			      }
-			    }
-
-		}
-		else if(filter.equals("blackandwhite"))
-		{
-		    BufferedImage result = new BufferedImage(collageWidth, collageHeight, BufferedImage.TYPE_BYTE_GRAY);
-		    result.getGraphics().drawImage(collageImage, 0, 0, null);
-		    WritableRaster raster = result.getRaster();
-		    int[] pixels = new int[collageImage.getWidth()];
-		    for (int y = 0; y < collageImage.getHeight(); y++) {
-		        raster.getPixels(0, y, collageImage.getWidth(), 1, pixels);
-		        for (int i = 0; i < pixels.length; i++) {
-		            if (pixels[i] < 126) pixels[i] = 0;
-		            else pixels[i] = 255;
-		        }
-		        raster.setPixels(0, y, collageImage.getWidth(), 1, pixels);
-		    }
-		    collageImage=result;
-		}
-
-		assert (images.size() == 30);
 		g2.dispose();
-		return collageImage;//change TRUE to border boolean!
-		//return collageImage;
+		return collageImage;
 	}
+	public static BufferedImage buildCollage (List<BufferedImage> images, String letters, Boolean rotate, String filter)
+	{
+		// formatImages is a helper function used to format images (resize, add border)
+		images = formatImages(images, filter);
+
+		// Create a new buffer and draw the images into the new image (collage)
+		
+		List<BufferedImage> listImages = new ArrayList<BufferedImage>();
+		for(int i =0; i<letters.length();i++)
+		{
+			Character letter = letters.charAt(i);
+			
+			listImages.add(buildImage(images,collageHeight,collageWidth,Character.toUpperCase(letter),rotate));
+		}
+		
+		for(int i =0;i<listImages.size();i++)
+		{
+			listImages.set(i, resizeImage(collageHeight,collageWidth/letters.length(),listImages.get(i)));
+			System.out.println("made it");
+		}
+		BufferedImage result=listImages.get(0);
+		for(int i =1;i<listImages.size();i++)
+		{
+			result = joinBufferedImage(result,listImages.get(i));
+		}
+		return result;
+		//assert (images.size() == 30);
+
+	}
+    public static BufferedImage joinBufferedImage(BufferedImage img1,BufferedImage img2) {
+
+        //do some calculate first
+        int wid = img1.getWidth()+img2.getWidth();
+        int height = Math.max(img1.getHeight(),img2.getHeight());
+        //create a new buffer and draw two image into the new image
+        BufferedImage newImage = new BufferedImage(wid,height, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g2 = newImage.createGraphics();
+        Color oldColor = g2.getColor();
+        //fill background
+        g2.setPaint(Color.WHITE);
+        g2.fillRect(0, 0, wid, height);
+        //draw image
+        g2.setColor(oldColor);
+        g2.drawImage(img1, null, 0, 0);
+        g2.drawImage(img2, null, img1.getWidth(), 0);
+        g2.dispose();
+        return newImage;
+    }
 	 public static BufferedImage toGrayScale(BufferedImage master) {
 	        BufferedImage gray = new BufferedImage(master.getWidth(), master.getHeight(), BufferedImage.TYPE_INT_ARGB);
 
@@ -422,13 +397,79 @@ public class CollageBuilder
 	 * @param images
 	 * @return
 	 */
-	private static List<BufferedImage> formatImages (List<BufferedImage> images)
+	private static List<BufferedImage> formatImages (List<BufferedImage> images, String filter)
 	{
+		int idealImageWidth = 420;
+		int idealImageHeight = 240;
 		for (int i = 0; i < images.size(); ++i) {
 			BufferedImage image = images.get(i);
 			image = resizeImage(idealImageWidth, idealImageHeight, image);
 			image = addBorderToImage(image, CollageBuilder.borderWidth);
+			if(filter.equals("grayscale"))
+			{
+				image=toGrayScale(image);
+			}
+			else if(filter.equals("sepia"))
+			{
+				 for(int y = 0; y < collageHeight; y++){
+				      for(int x = 0; x < collageWidth; x++){
+				        int p = image.getRGB(x,y);
+
+				        int a = (p>>24)&0xff;
+				        int r = (p>>16)&0xff;
+				        int g = (p>>8)&0xff;
+				        int b = p&0xff;
+
+				        //calculate tr, tg, tb
+				        int tr = (int)(0.393*r + 0.769*g + 0.189*b);
+				        int tg = (int)(0.349*r + 0.686*g + 0.168*b);
+				        int tb = (int)(0.272*r + 0.534*g + 0.131*b);
+
+				        //check condition
+				        if(tr > 255){
+				          r = 255;
+				        }else{
+				          r = tr;
+				        }
+
+				        if(tg > 255){
+				          g = 255;
+				        }else{
+				          g = tg;
+				        }
+
+				        if(tb > 255){
+				          b = 255;
+				        }else{
+				          b = tb;
+				        }
+
+				        //set new RGB value
+				        p = (a<<24) | (r<<16) | (g<<8) | b;
+
+				        image.setRGB(x, y, p);
+				      }
+				    }
+
+			}
+			else if(filter.equals("blackandwhite"))
+			{
+			    BufferedImage result = new BufferedImage(collageWidth, collageHeight, BufferedImage.TYPE_BYTE_GRAY);
+			    result.getGraphics().drawImage(image, 0, 0, null);
+			    WritableRaster raster = result.getRaster();
+			    int[] pixels = new int[image.getWidth()];
+			    for (int y = 0; y < image.getHeight(); y++) {
+			        raster.getPixels(0, y, image.getWidth(), 1, pixels);
+			        for (int l = 0; l < pixels.length; l++) {
+			            if (pixels[l] < 126) pixels[l] = 0;
+			            else pixels[l] = 255;
+			        }
+			        raster.setPixels(0, y, image.getWidth(), 1, pixels);
+			    }
+			    image=result;
+			}
 			images.set(i, image);
+			
 		}
 		return images;
 	}
