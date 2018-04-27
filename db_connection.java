@@ -128,7 +128,7 @@ public class db_connection {
 				ps3.setString(2, this.userName + "-" + newImageCount);				
 			    String directoryName = this.userName;
 			    File directory = new File(directoryName);
-			    if (! directory.exists()){
+			    if (!directory.exists()){
 			        directory.mkdir();
 			        // If you require it to make the entire directory path including parents,
 			        // use directory.mkdirs(); here instead.
@@ -209,18 +209,25 @@ public class db_connection {
 			conn = DriverManager.getConnection("jdbc:mysql://localhost/collage?user=root&password=root&useSSL=false");
 			st = conn.createStatement();
 			ps = conn.prepareStatement("SELECT userID FROM UserInfo WHERE username=?");
-			ps2 = conn.prepareStatement("SELECT imageCount FROM Image WHERE userID=?");				
-			ps3 = conn.prepareStatement("SELECT images FROM Image WHERE userID=?");
+			//ps2 = conn.prepareStatement("SELECT imageCount FROM Image WHERE userID=?");				
+			ps2 = conn.prepareStatement("SELECT images FROM Image WHERE userID=?");
 			ps.setString(1, this.userName);			
 			rs = ps.executeQuery();
 			while (rs.next()) { //basically we are searching for all the userID with username daher or current user
 				//then we are finding the imageCount for that specific user
 				//then we are inserting the image in the image column that matches the current user's id
-				rs.getInt("userID");
-				ps3.setString(1, this.userName);
-				rs2 = ps.executeQuery();
+				int userID = rs.getInt("userID");
+				//ps2.setString(1, this.userName);
+				ps2.setInt(1, userID);
+				rs2 = ps2.executeQuery();
+				System.out.println("rs2 just executed");
 				while (rs2.next()) {
-					pairs.add(Pair.getPairFromFile(rs2.getString(1)));
+					System.out.println("in while");
+					String param = rs2.getString("images");
+					System.out.println("string param is: " + param);
+					System.out.println("IT IS: "+param);
+					String filePath = "/Users/dmdaher/eclipse/java-oxygen2/Eclipse.app/Contents/MacOS/" + param;
+					pairs.add(Pair.getPairFromFile(filePath));
 				}
 				flag = true;
 			}
