@@ -1,11 +1,7 @@
 package jdbc;
 
-import java.io.FileOutputStream;
-
 import java.io.File;
-import java.util.ArrayList;
-import java.io.InputStream;
-import java.sql.Blob;
+import java.io.FileNotFoundException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -13,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Types;
-
+import java.util.ArrayList;
 
 import utilities.Pair;
 
@@ -87,6 +83,10 @@ public class db_connection {
             e.printStackTrace();
         }
 	}
+	
+	public String getUsername() {
+		return this.userName;
+	}
 	//select the userID for the current user --- in this case "daher"
 	//find the imageCount for that user using the userID found
 	//then insert the pair image into the images field where the userID is the current user and the imageCount is incremented
@@ -101,6 +101,7 @@ public class db_connection {
 		ResultSet rs = null;
 		ResultSet rs2 = null;
 		ResultSet rs3 = null;
+		boolean flag = false;
 		try {
 			//int imageCount = 0; //will need to maintain count number so should not be 0
 			Class.forName("com.mysql.jdbc.Driver");
@@ -111,10 +112,12 @@ public class db_connection {
 			ps3 = conn.prepareStatement("INSERT INTO Image(userID, images, imageCount) VALUES(?,?,?)");
 			ps.setString(1, this.userName);
 			rs = ps.executeQuery();
+			System.out.println("hiIIII");
 			while (rs.next()) { //basically we are searching for all the userID with username daher or current user
 				//then we are finding the imageCount for that specific user
 				//then we are inserting the image in the image column that matches the current user's id
-				rs.getInt("userID");
+				System.out.println("hi");
+				rs.getInt("userID");	
 				ps2.setInt(1, rs.getInt("userID"));
 				rs2 = ps2.executeQuery();
 				int count = 0;
@@ -122,8 +125,7 @@ public class db_connection {
 					count = rs2.getInt("imageCount") ;
 				ps3.setInt(1, rs.getInt("userID"));
 				int newImageCount = count + 1;
-				ps3.setString(2, this.userName + "/" + newImageCount);
-				
+				ps3.setString(2, this.userName + "-" + newImageCount);				
 			    String directoryName = this.userName;
 			    File directory = new File(directoryName);
 			    if (! directory.exists()){
@@ -132,9 +134,10 @@ public class db_connection {
 			        // use directory.mkdirs(); here instead.
 			    }
 
-				p.saveImageToFile(this.userName + "/" + newImageCount);
+				p.saveImageToFile(this.userName + "-" + newImageCount);
 				ps3.setInt(3, newImageCount);
 				ps3.executeUpdate();
+				flag = true;
 				System.out.println("what is the imageCount? " + newImageCount);
 				System.out.println("what is the int?" + rs.getInt("userID"));
 				//CHECK IF DIRECTORY EXISTS
@@ -147,13 +150,18 @@ public class db_connection {
 //					//p.saveImageToFile(userName + " /");
 //				}
 			}
+			
 		} catch (SQLException sqle) {
 			System.out.println ("SQLException: " + sqle.getMessage());
 			return false;
 		} catch (ClassNotFoundException cnfe) {
 			System.out.println ("ClassNotFoundException: " + cnfe.getMessage());
 			return false;
+		} catch (Exception e) {
+			System.out.println ("Exception: " + e.getMessage());
+			return false;
 		} finally {
+			System.out.println("After finally loop");
 			try {
 				if (rs != null) {
 					rs.close();
@@ -169,9 +177,16 @@ public class db_connection {
 				}
 			} catch (SQLException sqle) {
 				System.out.println("sqle: " + sqle.getMessage());
+				return false;
+			}
+			System.out.println("After finally second loop");
+			if(flag == false) {
+				System.out.println("After if flag false");
+				return false;
 			}
 		}
-		return true;
+		System.out.println("After everything");
+		return true;	
 	}
 	
 	//select the userID for the current user --- in this case "daher"
@@ -187,6 +202,7 @@ public class db_connection {
 		ResultSet rs2 = null;
 		ResultSet rs3 = null;
 		ArrayList<Pair> pairs = new ArrayList<Pair>();
+		boolean flag = false;
 		try {
 			//int imageCount = 0; //will need to maintain count number so should not be 0
 			Class.forName("com.mysql.jdbc.Driver");
@@ -195,8 +211,7 @@ public class db_connection {
 			ps = conn.prepareStatement("SELECT userID FROM UserInfo WHERE username=?");
 			ps2 = conn.prepareStatement("SELECT imageCount FROM Image WHERE userID=?");				
 			ps3 = conn.prepareStatement("SELECT images FROM Image WHERE userID=?");
-			ps.setString(1, this.userName);
-			
+			ps.setString(1, this.userName);			
 			rs = ps.executeQuery();
 			while (rs.next()) { //basically we are searching for all the userID with username daher or current user
 				//then we are finding the imageCount for that specific user
@@ -207,21 +222,16 @@ public class db_connection {
 				while (rs2.next()) {
 					pairs.add(Pair.getPairFromFile(rs2.getString(1)));
 				}
-				//CHECK IF DIRECTORY EXISTS
-				//IF NOT, CREATE FILEPATH
-				//IF SO, ADD 1 and CREATE FILEPATH
-				//THEN IN DATABASE, INSERT INTO IMAGE TABLE
-				//THEN CHECK THAT USERID IN THE IMAGE TABLE
-				//AND GRAB THOSE IMAGES AND DISPLAY
-//					if(rs.getString("username").equals(userName)) {
-//						//p.saveImageToFile(userName + " /");
-//					}
+				flag = true;
 			}
-		} catch (SQLException sqle) {
+		}catch (SQLException sqle) {
 			System.out.println ("SQLException: " + sqle.getMessage());
+			return null;
 		} catch (ClassNotFoundException cnfe) {
 			System.out.println ("ClassNotFoundException: " + cnfe.getMessage());
-		} finally {
+			return null;
+		}
+		finally {
 			try {
 				if (rs != null) {
 					rs.close();
@@ -237,44 +247,15 @@ public class db_connection {
 				}
 			} catch (SQLException sqle) {
 				System.out.println("sqle: " + sqle.getMessage());
+				return null;
 			}
 		}
-		return pairs;
+		if (flag == false) {
+			return null;
+		}else {
+			return pairs;	
+		}
 	}
-	
-//	public String retrieveImages(String userName) {
-//		//this.userName = userName;
-//		Connection conn = null;
-//		Statement st = null;
-//		PreparedStatement ps = null;
-//		ResultSet rs = null;
-//        String bytes = "for testing...";
-//		try{
-//            Class.forName("com.mysql.jdbc.Driver");
-//            conn = DriverManager.getConnection("jdbc:mysql://localhost/collage?user=root&password=root&useSSL=false");
-//            File file = new File();
-//            FileOutputStream fos;
-//            //fos. //input the file pathname here
-//            byte b[];
-//            java.sql.Blob blob;
-//            ps = conn.prepareStatement("SELECT * FROM UserInfo WHERE username=?");
-//            ps.setString(1, userName);
-//            rs = ps.executeQuery();
-//            while(rs.next()){
-//                blob= rs.getBlob("images");
-//                b=blob.getBytes(1,(int)blob.length());
-////                fos.write(b);
-//                return bytes;
-//            }            
-//            ps.close();
-////            fos.close();
-//            conn.close();
-//            return bytes;
-//        }catch(Exception e){
-//            e.printStackTrace();
-//        }
-//		return bytes;
-//	}
 	
 	public boolean login(String userName, String password) {
 		this.userName = userName;
