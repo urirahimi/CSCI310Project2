@@ -18,6 +18,7 @@
 	<%
 		// converts BufferedImage into Image src
 		String b64 = "";
+		String b64PDF="";
 		if (!(boolean) session.getAttribute("error")) {
 			BufferedImage bImage = (BufferedImage) (session.getAttribute("collage"));
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -26,6 +27,7 @@
 			byte[] imageInByteArray = baos.toByteArray();
 			baos.close();
 			b64 = "data:image/png;base64, " + javax.xml.bind.DatatypeConverter.printBase64Binary(imageInByteArray);
+			b64PDF="data:image/pdf;base64, " + javax.xml.bind.DatatypeConverter.printBase64Binary(imageInByteArray);
 		} else {
 			b64 = "img/error.png";
 		}
@@ -33,6 +35,7 @@
 		ArrayList<Pair> list = (ArrayList<Pair>) (session.getAttribute("list"));
 		Pair pair = new Pair((String) (session.getAttribute("query")), b64);
 		// list is appended to the back
+		if(list==null)list = new ArrayList<Pair>();
 		list.add(pair);
 		// put newest item to front of list
 		Pair buffer = list.get(list.size() - 1);
@@ -66,11 +69,22 @@
 					return false;
 				}
 				else {
-					return true;
+					return false;
 				}
 			}
-			
+			function pdfDownload()
+			{
+				<%session.setAttribute("pdfB",true);%>
+				var requeststr = "PDFDownload?";	
+				var xhttp = new XMLHttpRequest();
+				console.log("In save func. before open and send");
+				xhttp.open("GET", requeststr, false);
+				xhttp.send();
+				
+				xhttp.close();
+			}
 			function saveResult() {
+				<%session.setAttribute("pdfB",false);%>
 				console.log("In save func");
 				var requeststr = "SaveServlet?";	
 				
@@ -107,9 +121,11 @@
 			<!-- TODO: collage title needs to be hooked up, also need to EXPORT -->
 		</div>
 		<form>
-			<a id="export" download="collage.png" href="<%=b64%>"> <input
-				id="export-button" type="submit" value="Export Collage"
-				onclick="check">
+			<a id="export" download="collage.png" href="<%=b64%>">
+			Download as PNG
+			</a>
+			<a id="export" download="collage.pdf" href="<%=b64PDF%>">
+			Download as PDF
 			</a>
 			<a id="save" href="<%=b64%>" > <input id="save-button" type="button" 
 				value="Save Collage" onclick="saveResult()"></a>
@@ -146,10 +162,10 @@
 			%>
 
 		</div>
-		<!-- <script language="javascript" type="text/javascript">
+<!-- 		<script language="javascript" type="text/javascript">
      $(window).load(function() {
      $('#loading').hide();
   });
-</script> -->
+</script> --> 
 </body>
 </html>
