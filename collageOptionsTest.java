@@ -62,9 +62,10 @@ public class collageOptionsTest {
 		BufferedImage BufferedImageOne = CollageBuilder.buildCollage(images, "A", true, "sepia", false, 800, 800);
 		BufferedImage BufferedImageTwo = CollageBuilder.buildCollage(images, "A", false, "sepia", false, 800, 800);
 		
+		
 		Assert.assertNotEquals(BufferedImageOne,BufferedImageTwo); //should not equal each other
-		BufferedImageOne = CollageBuilder.buildCollage(images, "A", false, "sepia", false, 800, 800);
-		BufferedImageTwo = CollageBuilder.buildCollage(images, "A", false, "sepia", false, 800, 800);
+		BufferedImageOne = CollageBuilder.buildCollage(images, "A", false, "none", false, 800, 800);
+		BufferedImageTwo = CollageBuilder.buildCollage(images, "A", false, "none", false, 800, 800);
 		Assert.assertTrue(CollageBuilder.bufferedImagesEqual(BufferedImageOne, BufferedImageTwo)); //should equal since rotations are both off
 	}
 //	@Test
