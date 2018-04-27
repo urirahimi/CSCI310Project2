@@ -60,20 +60,27 @@ public class collageOptionsTest {
 			images.add(allImages.get(i));
 		}
 		BufferedImage BufferedImageOne = CollageBuilder.buildCollage(images, "A", true, "sepia", false, 800, 800);
-		BufferedImage BufferedImageTwo = CollageBuilder.buildCollage(images, "A", false, "sepia", false, 800, 800);
-		
-		
+		BufferedImage BufferedImageTwo = CollageBuilder.buildCollage(images, "A", false, "sepia", false, 800, 800);		
 		Assert.assertNotEquals(BufferedImageOne,BufferedImageTwo); //should not equal each other
 		BufferedImageOne = CollageBuilder.buildCollage(images, "A", false, "none", false, 800, 800);
 		BufferedImageTwo = CollageBuilder.buildCollage(images, "A", false, "none", false, 800, 800);
 		Assert.assertTrue(CollageBuilder.bufferedImagesEqual(BufferedImageOne, BufferedImageTwo)); //should equal since rotations are both off
 	}
-//	@Test
-//	public void collageBordersTest() {
-//		AssertNotEquals(buildCollage(images, 'A', "sepia", true, false, 800, 800), buildCollage(images, 'A', "sepia", false, false, 800, 800)); //should not equal each other
-//		AssertEquals(buildCollage(images, 'A', "sepia", true, false, 800, 800),buildCollage(images, 'A', "sepia", true, false, 800, 800)); //should equal since rotations are both off
-//		AssertEquals(buildCollage(images, 'A', "sepia", false, false, 800, 800),buildCollage(images, 'A', "sepia", false, false, 800, 800)); //should equal since rotations are both off
-//	}
+	@Test
+	public void collageBordersTest() {
+		List<BufferedImage> allImages = new ArrayList<BufferedImage>();
+		List<BufferedImage> images = new ArrayList<BufferedImage>();
+		allImages = ImageService.getImages("dog");
+		for(int i = 0; i<30; i++) {
+			images.add(allImages.get(i));
+		}
+		BufferedImage BufferedImageOne = CollageBuilder.buildCollage(images, "A", false, "sepia", true, 800, 800);
+		BufferedImage BufferedImageTwo = CollageBuilder.buildCollage(images, "A", false, "sepia", false, 800, 800);		
+		Assert.assertNotEquals(BufferedImageOne,BufferedImageTwo); //should not equal each other
+		BufferedImageOne = CollageBuilder.buildCollage(images, "A", false, "none", false, 800, 800);
+		BufferedImageTwo = CollageBuilder.buildCollage(images, "A", false, "none", false, 800, 800);
+		Assert.assertTrue(CollageBuilder.bufferedImagesEqual(BufferedImageOne, BufferedImageTwo)); //should equal since borders are both off
+	}
 //	@Test
 //	public void collageComboTest() {
 //		AssertNotNull(buildCollage(images, 'A', "sepia", true, true, 800, 800));
@@ -90,50 +97,137 @@ public class collageOptionsTest {
 //		AssertNotNull(buildCollage(images, 'A', "grayscale", false, false, 800, 800));
 //	}
 	@Test
-	public void collageLetterTest() {
+	public void collageUppercaseTest() {
 		List<BufferedImage> allImages = new ArrayList<BufferedImage>();
 		List<BufferedImage> images = new ArrayList<BufferedImage>();
 		allImages = ImageService.getImages("dog");
 		for(int i = 0; i<30; i++) {
 			images.add(allImages.get(i));
 		}
-		Assert.assertNotNull(CollageBuilder.buildCollage(images, "D", false, "sepia")); //test random letter
-		Assert.assertNotNull(CollageBuilder.buildCollage(images, "bbll", false, "sepia")); //test lowercase letters
-		Assert.assertNotNull(CollageBuilder.buildCollage(images, "CCDD", false, "sepia")); //test uppercase letters
-		Assert.assertNotNull(CollageBuilder.buildCollage(images, "ddjJM", false, "sepia")); //test combo lowercase and uppercase
-		Assert.assertNotNull(CollageBuilder.buildCollage(images, "E j D   D", false, "sepia")); //test with spaces
-		Assert.assertNotNull(CollageBuilder.buildCollage(images, "ddddffffjjjjjjJJJJJMMMMMMMmmmmmmmmmmmmmmmmmmm", false, "sepia")); //test excessive input
-		Assert.assertNotNull(CollageBuilder.buildCollage(images, 'G', false, "sepia"));
-		Assert.assertNotNull(CollageBuilder.buildCollage(images, 'H', false, "sepia"));
-		Assert.assertNotNull(CollageBuilder.buildCollage(images, 'I', false, "sepia"));
-		Assert.assertNotNull(CollageBuilder.buildCollage(images, 'J', false, "sepia"));
-		Assert.assertNotNull(CollageBuilder.buildCollage(images, 'K', false, "sepia"));
-		Assert.assertNotNull(CollageBuilder.buildCollage(images, 'L', false, "sepia"));
-		Assert.assertNotNull(CollageBuilder.buildCollage(images, 'M', false, "sepia"));
-		Assert.assertNotNull(CollageBuilder.buildCollage(images, 'N', false, "sepia"));
-		Assert.assertNotNull(CollageBuilder.buildCollage(images, 'O', false, "sepia"));
-		Assert.assertNotNull(CollageBuilder.buildCollage(images, 'P', false, "sepia"));
-		Assert.assertNotNull(CollageBuilder.buildCollage(images, 'Q', false, "sepia"));
-		Assert.assertNotNull(CollageBuilder.buildCollage(images, 'R', false, "sepia"));
-		Assert.assertNotNull(CollageBuilder.buildCollage(images, 'S', false, "sepia"));
-		Assert.assertNotNull(CollageBuilder.buildCollage(images, 'T', false, "sepia"));
-		Assert.assertNotNull(CollageBuilder.buildCollage(images, 'U', false, "sepia"));
-		Assert.assertNotNull(CollageBuilder.buildCollage(images, 'V', false, "sepia"));
-		Assert.assertNotNull(CollageBuilder.buildCollage(images, 'W', false, "sepia"));
-		Assert.assertNotNull(CollageBuilder.buildCollage(images, 'X', false, "sepia"));
-		Assert.assertNotNull(CollageBuilder.buildCollage(images, 'Y', false, "sepia"));
-		Assert.assertNotNull(CollageBuilder.buildCollage(images, 'Z', false, "sepia"));
-
-		
-		
+		Assert.assertNotNull(CollageBuilder.buildCollage(images, "CCDD", false, "sepia",false,800,800)); //test uppercase letters
+	}
+	
+	@Test
+	public void collageExcessiveInputTest() {
+		List<BufferedImage> allImages = new ArrayList<BufferedImage>();
+		List<BufferedImage> images = new ArrayList<BufferedImage>();
+		allImages = ImageService.getImages("dog");
+		for(int i = 0; i<30; i++) {
+			images.add(allImages.get(i));
+		}
+		Assert.assertNotNull(CollageBuilder.buildCollage(images, "ddddddddddddddddffffffffffjjjjJJJJJJJJJJJJJJJmmmMMMMMMMMMMMM", false, "sepia",false,800,800)); //test excessive input
+	}
+	
+	
+	@Test
+	public void collageSpacesTest() {
+		List<BufferedImage> allImages = new ArrayList<BufferedImage>();
+		List<BufferedImage> images = new ArrayList<BufferedImage>();
+		allImages = ImageService.getImages("dog");
+		for(int i = 0; i<30; i++) {
+			images.add(allImages.get(i));
+		}
+		Assert.assertNotNull(CollageBuilder.buildCollage(images, "E j   D D", false, "sepia",false,800,800)); //test with spaces
+	}
+	
+//	@Test
+//	public void collageLowercaseTest() {
+//		List<BufferedImage> allImages = new ArrayList<BufferedImage>();
+//		List<BufferedImage> images = new ArrayList<BufferedImage>();
+//		allImages = ImageService.getImages("dog");
+//		for(int i = 0; i<30; i++) {
+//			images.add(allImages.get(i));
+//		}
+//		Assert.assertNotNull(CollageBuilder.buildCollage(images, "bbll", false, "sepia",false,800,800)); //test lowercase letters
+//	}
+//	@Test
+//	public void collageIndividualLowercaseLetterTest() {
+//		List<BufferedImage> allImages = new ArrayList<BufferedImage>();
+//		List<BufferedImage> images = new ArrayList<BufferedImage>();
+//		allImages = ImageService.getImages("dog");
+//		for(int i = 0; i<30; i++) {
+//			images.add(allImages.get(i));
+//		}
+//		Assert.assertNotNull(CollageBuilder.buildCollage(images, "a", false, "sepia",false,800,800));
+////		Assert.assertNotNull(CollageBuilder.buildCollage(images, "b", false, "sepia",false,800,800));
+////		Assert.assertNotNull(CollageBuilder.buildCollage(images, "c", false, "sepia",false,800,800));
+////		Assert.assertNotNull(CollageBuilder.buildCollage(images, "d", false, "sepia",false,800,800));
+////		Assert.assertNotNull(CollageBuilder.buildCollage(images, "e", false, "sepia",false,800,800));
+////		Assert.assertNotNull(CollageBuilder.buildCollage(images, "f", false, "sepia",false,800,800));
+////		Assert.assertNotNull(CollageBuilder.buildCollage(images, "g", false, "sepia",false,800,800));
+////		Assert.assertNotNull(CollageBuilder.buildCollage(images, "h", false, "sepia",false,800,800));
+////		Assert.assertNotNull(CollageBuilder.buildCollage(images, "i", false, "sepia",false,800,800));
+////		Assert.assertNotNull(CollageBuilder.buildCollage(images, "j", false, "sepia",false,800,800));
+////		Assert.assertNotNull(CollageBuilder.buildCollage(images, "k", false, "sepia",false,800,800));
+////		Assert.assertNotNull(CollageBuilder.buildCollage(images, "l", false, "sepia",false,800,800));
+////		Assert.assertNotNull(CollageBuilder.buildCollage(images, "m", false, "sepia",false,800,800));
+////		Assert.assertNotNull(CollageBuilder.buildCollage(images, "n", false, "sepia",false,800,800));
+////		Assert.assertNotNull(CollageBuilder.buildCollage(images, "o", false, "sepia",false,800,800));
+////		Assert.assertNotNull(CollageBuilder.buildCollage(images, "p", false, "sepia",false,800,800));
+////		Assert.assertNotNull(CollageBuilder.buildCollage(images, "q", false, "sepia",false,800,800));
+////		Assert.assertNotNull(CollageBuilder.buildCollage(images, "r", false, "sepia",false,800,800));
+////		Assert.assertNotNull(CollageBuilder.buildCollage(images, "s", false, "sepia",false,800,800));
+////		Assert.assertNotNull(CollageBuilder.buildCollage(images, "t", false, "sepia",false,800,800));
+////		Assert.assertNotNull(CollageBuilder.buildCollage(images, "u", false, "sepia",false,800,800));
+////		Assert.assertNotNull(CollageBuilder.buildCollage(images, "v", false, "sepia",false,800,800));
+////		Assert.assertNotNull(CollageBuilder.buildCollage(images, "w", false, "sepia",false,800,800));
+////		Assert.assertNotNull(CollageBuilder.buildCollage(images, "x", false, "sepia",false,800,800));
+////		Assert.assertNotNull(CollageBuilder.buildCollage(images, "y", false, "sepia",false,800,800));
+////		Assert.assertNotNull(CollageBuilder.buildCollage(images, "z", false, "sepia",false,800,800));
+//	}
+	
+	@Test
+	public void collageIndividualUppercaseLetterTest() {
+		List<BufferedImage> allImages = new ArrayList<BufferedImage>();
+		List<BufferedImage> images = new ArrayList<BufferedImage>();
+		allImages = ImageService.getImages("dog");
+		for(int i = 0; i<30; i++) {
+			images.add(allImages.get(i));
+		}
+		Assert.assertNotNull(CollageBuilder.buildCollage(images, "A", false, "sepia",false,800,800));
+//		Assert.assertNotNull(CollageBuilder.buildCollage(images, "B", false, "sepia",false,800,800));
+//		Assert.assertNotNull(CollageBuilder.buildCollage(images, "C", false, "sepia",false,800,800));
+//		Assert.assertNotNull(CollageBuilder.buildCollage(images, "D", false, "sepia",false,800,800));
+//		Assert.assertNotNull(CollageBuilder.buildCollage(images, "E", false, "sepia",false,800,800));
+//		Assert.assertNotNull(CollageBuilder.buildCollage(images, "F", false, "sepia",false,800,800));
+//		Assert.assertNotNull(CollageBuilder.buildCollage(images, "G", false, "sepia",false,800,800));
+//		Assert.assertNotNull(CollageBuilder.buildCollage(images, "H", false, "sepia",false,800,800));
+//		Assert.assertNotNull(CollageBuilder.buildCollage(images, "I", false, "sepia",false,800,800));
+//		Assert.assertNotNull(CollageBuilder.buildCollage(images, "J", false, "sepia",false,800,800));
+//		Assert.assertNotNull(CollageBuilder.buildCollage(images, "K", false, "sepia",false,800,800));
+//		Assert.assertNotNull(CollageBuilder.buildCollage(images, "L", false, "sepia",false,800,800));
+//		Assert.assertNotNull(CollageBuilder.buildCollage(images, "M", false, "sepia",false,800,800));
+//		Assert.assertNotNull(CollageBuilder.buildCollage(images, "N", false, "sepia",false,800,800));
+//		Assert.assertNotNull(CollageBuilder.buildCollage(images, "O", false, "sepia",false,800,800));
+//		Assert.assertNotNull(CollageBuilder.buildCollage(images, "P", false, "sepia",false,800,800));
+//		Assert.assertNotNull(CollageBuilder.buildCollage(images, "Q", false, "sepia",false,800,800));
+//		Assert.assertNotNull(CollageBuilder.buildCollage(images, "R", false, "sepia",false,800,800));
+//		Assert.assertNotNull(CollageBuilder.buildCollage(images, "S", false, "sepia",false,800,800));
+//		Assert.assertNotNull(CollageBuilder.buildCollage(images, "T", false, "sepia",false,800,800));
+//		Assert.assertNotNull(CollageBuilder.buildCollage(images, "U", false, "sepia",false,800,800));
+//		Assert.assertNotNull(CollageBuilder.buildCollage(images, "V", false, "sepia",false,800,800));
+//		Assert.assertNotNull(CollageBuilder.buildCollage(images, "W", false, "sepia",false,800,800));
+//		Assert.assertNotNull(CollageBuilder.buildCollage(images, "X", false, "sepia",false,800,800));
+//		Assert.assertNotNull(CollageBuilder.buildCollage(images, "Y", false, "sepia",false,800,800));
+//		Assert.assertNotNull(CollageBuilder.buildCollage(images, "Z", false, "sepia",false,800,800));
+	}
+	
+//	@Test
+//	public void collageComboTest() {
+//		List<BufferedImage> allImages = new ArrayList<BufferedImage>();
+//		List<BufferedImage> images = new ArrayList<BufferedImage>();
+//		allImages = ImageService.getImages("dog");
+//		for(int i = 0; i<30; i++) {
+//			images.add(allImages.get(i));
+//		}
 //		AssertNotNull(CollageBuilder.buildCollage(images, 'A', "sepia", true, true, 800, 800));
-//		AssertNotNull(CollageBuilderbuildCollage(images, 'B', "sepia", true, true, 800, 800));
-//		AssertNotNull(CollageBuilderbuildCollage(images, 'C', "sepia", true, true, 800, 800));
-//		AssertNotNull(CollageBuilderbuildCollage(images, 'D', "sepia", true, true, 800, 800));
-//		AssertNotNull(CollageBuilderbuildCollage(images, 'E', "sepia", true, true, 800, 800));
-//		AssertNotNull(CollageBuilderbuildCollage(images, 'F', "sepia", true, true, 800, 800));
-//		AssertNotNull(CollageBuilderbuildCollage(images, 'G', "sepia", true, true, 800, 800));
-//		AssertNotNull(CollageBuilderbuildCollage(images, 'H', "sepia", true, true, 800, 800));
+//		AssertNotNull(CollageBuilder.buildCollage(images, 'B', "sepia", true, true, 800, 800));
+//		AssertNotNull(CollageBuilder.buildCollage(images, 'C', "sepia", true, true, 800, 800));
+//		AssertNotNull(CollageBuilder.buildCollage(images, 'D', "sepia", true, true, 800, 800));
+//		AssertNotNull(CollageBuilder.buildCollage(images, 'E', "sepia", true, true, 800, 800));
+//		AssertNotNull(CollageBuilder.buildCollage(images, 'F', "sepia", true, true, 800, 800));
+//		AssertNotNull(CollageBuilder.buildCollage(images, 'G', "sepia", true, true, 800, 800));
+//		AssertNotNull(CollageBuilder.buildCollage(images, 'H', "sepia", true, true, 800, 800));
 //		AssertNotNull(CollageBuilderbuildCollage(images, 'I', "sepia", true, true, 800, 800));
 //		AssertNotNull(CollageBuilderbuildCollage(images, 'J', "sepia", true, true, 800, 800));
 //		AssertNotNull(CollageBuilderbuildCollage(images, 'K', "sepia", true, true, 800, 800));
@@ -152,5 +246,5 @@ public class collageOptionsTest {
 //		AssertNotNull(CollageBuilderbuildCollage(images, 'X', "sepia", true, true, 800, 800));
 //		AssertNotNull(CollageBuilderbuildCollage(images, 'Y', "sepia", true, true, 800, 800));
 //		AssertNotNull(CollageBuilderbuildCollage(images, 'Z', "sepia", true, true, 800, 800));
-	}
+//	}
 }
