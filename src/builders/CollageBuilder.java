@@ -561,6 +561,40 @@ public class CollageBuilder
 		}
 		return newImage;
 	}
+	
+	private static BufferedImage rotateImage (BufferedImage image, double rotation)
+	{
+		AffineTransform at = new AffineTransform();
+
+		// 4. translate it to the center of the component
+		at.translate(image.getWidth() / 2, image.getHeight() / 2);
+
+		// 3. do the actual rotation
+		at.rotate(rotation * Math.PI / 4.0);
+
+		// 2. just a scale because this image is big
+		at.scale(0.375, 0.375);
+
+		// 1. translate the object so that you rotate it around the
+		// center (easier :))
+		at.translate(-image.getWidth() / 2, -image.getHeight() / 2);
+
+		// draw the image
+		BufferedImage newImage = new BufferedImage(image.getWidth(), image.getHeight(), image.getType());
+		Graphics2D g = (Graphics2D) newImage.getGraphics();
+
+		Graphics2D g2d = (Graphics2D) g;
+		g2d.drawImage(image, at, null);
+
+		File outputfile = new File("rotated.png");
+		try {
+			ImageIO.write(newImage, "png", outputfile);
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+		return newImage;
+	}
 
 	public static void main (String[] args)
 	{
