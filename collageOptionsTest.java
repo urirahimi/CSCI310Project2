@@ -50,11 +50,23 @@ public class collageOptionsTest {
 //		AssertTrue(!buildCollage(images, 'A', "sepia", true, true, 1200, 1201)); //exceeds
 //		AssertTrue(!buildCollage(images, 'A', "sepia", true, true, 1201, 1201)); //exceeds
 //	}
-//	@Test
-//	public void collageRotationsTest() {
-//		AssertNotEquals(buildCollage(images, 'A', "sepia", true, false, 800, 800), buildCollage(images, 'A', "sepia", true, true, 800, 800)); //should not equal each other
-//		AssertEquals(buildCollage(images, 'A', "sepia", true, false, 800, 800),buildCollage(images, 'A', "sepia", true, false, 800, 800)); //should equal since rotations are both off
-//	}
+	@Test
+	public void collageRotationsTest() {
+		//CollageBuilder cb = new CollageBuilder();
+		List<BufferedImage> allImages = new ArrayList<BufferedImage>();
+		List<BufferedImage> images = new ArrayList<BufferedImage>();
+		allImages = ImageService.getImages("dog");
+		for(int i = 0; i<30; i++) {
+			images.add(allImages.get(i));
+		}
+		BufferedImage BufferedImageOne = CollageBuilder.buildCollage(images, "A", true, "sepia", false, 800, 800);
+		BufferedImage BufferedImageTwo = CollageBuilder.buildCollage(images, "A", false, "sepia", false, 800, 800);
+		
+		Assert.assertNotEquals(BufferedImageOne,BufferedImageTwo); //should not equal each other
+		BufferedImageOne = CollageBuilder.buildCollage(images, "A", false, "sepia", false, 800, 800);
+		BufferedImageTwo = CollageBuilder.buildCollage(images, "A", false, "sepia", false, 800, 800);
+		Assert.assertTrue(CollageBuilder.bufferedImagesEqual(BufferedImageOne, BufferedImageTwo)); //should equal since rotations are both off
+	}
 //	@Test
 //	public void collageBordersTest() {
 //		AssertNotEquals(buildCollage(images, 'A', "sepia", true, false, 800, 800), buildCollage(images, 'A', "sepia", false, false, 800, 800)); //should not equal each other
@@ -110,6 +122,9 @@ public class collageOptionsTest {
 		Assert.assertNotNull(CollageBuilder.buildCollage(images, 'X', false, "sepia"));
 		Assert.assertNotNull(CollageBuilder.buildCollage(images, 'Y', false, "sepia"));
 		Assert.assertNotNull(CollageBuilder.buildCollage(images, 'Z', false, "sepia"));
+
+		
+		
 //		AssertNotNull(CollageBuilder.buildCollage(images, 'A', "sepia", true, true, 800, 800));
 //		AssertNotNull(CollageBuilderbuildCollage(images, 'B', "sepia", true, true, 800, 800));
 //		AssertNotNull(CollageBuilderbuildCollage(images, 'C', "sepia", true, true, 800, 800));
